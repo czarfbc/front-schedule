@@ -1,9 +1,12 @@
+import { BrowserRouter } from "react-router-dom"
+import { RouteApp } from "./routes"
+
 function App() {
 
   return (
-    <>
-      <h1 className="text-9xl">oi</h1>
-    </>
+    <BrowserRouter>
+      <RouteApp/>
+    </BrowserRouter>
   )
 }
 
