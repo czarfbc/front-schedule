@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import { Login } from "../page/login"
+import { Register } from "../page/register"
 
 export const RouteApp = () => {
     return( 
@@ -8,9 +9,7 @@ export const RouteApp = () => {
                 <Login/>
             }/>
             <Route path="/register" element={
-                <>
-                    <h1>Sssss</h1>
-                </>
+                <Register/>
             }/>
         </Routes>
     )
