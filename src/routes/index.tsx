@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 import { Login } from "../page/login"
 import { Register } from "../page/register"
+import { Dashboard } from "../page/dashboard"
 
 export const RouteApp = () => {
     return( 
@@ -10,6 +11,9 @@ export const RouteApp = () => {
             }/>
             <Route path="/register" element={
                 <Register/>
+            }/>
+            <Route path="/dashboard" element={
+                <Dashboard/>
             }/>
         </Routes>
     )

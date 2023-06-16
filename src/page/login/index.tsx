@@ -4,23 +4,27 @@ import { Input } from '../../components/input'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button } from '../../components/button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AiOutlineMail } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
+import { api } from '../../server'
+import { UseAuth } from '../../hooks/auth';
 
 interface IFormValues {
     email: string;
     password: string;
 }
 export function Login() {
+    const {signIn} = UseAuth()
+    const navigate = useNavigate()
     const schema = yup.object().shape({
         email: yup.string().email('Digite um email válido').required('Campo de email obrigatório'),
         password: yup.string().required('Campo de senha obrigatório'),
     })
     const { register, handleSubmit, formState: {errors} } = useForm<IFormValues>({resolver: yupResolver(schema)})
-    const submit = handleSubmit((data) => {
-        console.log("🚀 ~ file: index.tsx:18 ~ submit ~ data:", data)
-
+    const submit = handleSubmit(async ({email, password}) => {
+        const response = await signIn({email, password})
+        navigate//('/dashboard')
     })
     return(
         <div className="h-screen bg-no-repeat bg-cover bg-[url('./assets/background_login.webp')] flex items-center">
@@ -46,7 +50,7 @@ export function Login() {
                                 error={errors.password && errors.password.message}
                                 icon={<RiLockPasswordLine size={20} />}
                             />
-                            <Button text='Entar'/>
+                            <Button text='Entrar'/>
                         </form>
                         <div className='text-left mt-4'>
                             <span className='text-white font-light text-sm'>Ainda não tem conta? <Link to={'/register'} className='text-white underline'>Cadastre-se</Link> </span>

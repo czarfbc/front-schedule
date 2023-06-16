@@ -22,11 +22,11 @@ export function Register() {
         password: yup.string().min(6, 'Mínimo de 6 caracteres').required('Campo de senha obrigatório'),
     })
     const { register, handleSubmit, formState: {errors} } = useForm<IFormValues>({resolver: yupResolver(schema)})
-    const submit = handleSubmit(async (data) => {
+    const submit = handleSubmit(async ({name, email, password}) => {
         const result = await api.post('/users', {
-            name: data.name,
-            email: data.email,
-            password: data.password,
+            name,
+            email,
+            password,
         })
         console.log("🚀 ~ file: index.tsx:31 ~ submit ~ result:", result)
     })
