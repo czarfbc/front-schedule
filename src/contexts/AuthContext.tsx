@@ -32,6 +32,7 @@ export function AuthProvider({children}: IAuthProvider) {
             localStorage.setItem('token:semana-heroi', token)
             localStorage.setItem('refresh_token:semana-heroi', refresh_token)
             localStorage.setItem('user:semana-heroi', JSON.stringify(userData))
+            toast.success(`Seja bem vindo(a), ${userData.name}`)
             return data
         } catch (error) {
             console.log("🚀 ~ file: AuthContext.tsx:37 ~ signIn ~ error:", error)
