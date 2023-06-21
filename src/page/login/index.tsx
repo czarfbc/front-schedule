@@ -4,10 +4,9 @@ import { Input } from '../../components/input'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button } from '../../components/button';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AiOutlineMail } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
-import { api } from '../../server'
 import { UseAuth } from '../../hooks/auth';
 
 interface IFormValues {
@@ -16,15 +15,18 @@ interface IFormValues {
 }
 export function Login() {
     const {signIn} = UseAuth()
-    const navigate = useNavigate()
+    
     const schema = yup.object().shape({
         email: yup.string().email('Digite um email válido').required('Campo de email obrigatório'),
         password: yup.string().required('Campo de senha obrigatório'),
     })
     const { register, handleSubmit, formState: {errors} } = useForm<IFormValues>({resolver: yupResolver(schema)})
     const submit = handleSubmit(async ({email, password}) => {
-        const response = await signIn({email, password})
-        navigate//('/dashboard')
+        try {
+            signIn({email, password})
+        } catch (error) {
+            console.log("🚀 ~ file: index.tsx:29 ~ submit ~ error:", error)            
+        }
     })
     return(
         <div className="h-screen bg-no-repeat bg-cover bg-[url('./assets/background_login.webp')] flex items-center">

@@ -1,5 +1,9 @@
+import { Header } from "../../components/header";
+
 export function Dashboard() {
     return(
-        <h1 className="text-9xl">OLa marilene</h1>
+        <div className="max-w-[1340px] mx-auto px-4 w-full">
+            <Header/>
+        </div>
     )
 }
