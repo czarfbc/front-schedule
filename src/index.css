@@ -4,6 +4,19 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+    --primary: #348789;
+    --secondary: #001489;
+    --gray-50: #dddfeb;
+    --gray-100: #97909050;
+    --gray-200: #535653;
+    --gray-300: #7c838b;
+    --white: #ffffff;
+    --black: #272b30;
+}
 *{
     font-family: 'Poppins', sans-serif;
+}
+body{
+    background-color: #dddfeb;
 }

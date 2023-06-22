@@ -15,7 +15,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, IInput> = ({placehol
                 </i>
                 <input name="" id="" placeholder={placeholder} ref={ref} type={type} {...rest} className='w-full py-[0.7rem] px-[2.2rem] rounded-lg border-[1px] border-gray-50 border-solid bg-white text-base' />
             </label>
-            {error && <span className='text-[#ff0000]'>{error}</span>}
+            {error && <span className='text-[#ff0000] font-bold'>{error}</span>}
         </div>
     )
 }
