@@ -46,7 +46,7 @@ export function Dashboard() {
         <div className="max-w-[1340px] mx-auto px-4 w-full">
             <Header/>
             <div className="mt-6 mb-8 font-normal text-primary">
-                <h2 className="text-2xl">Bem vindo(a), <strong>{user.name}</strong></h2>
+                <h2 className="text-2xl">Bem vindo(a), <span className="font-bold">{user.name}</span></h2>
                 <p>Esta é sua lista de horários {isToday(date) && <span>de hoje,</span>} dia {format(date, 'dd/MM/yyyy')}</p>
             </div>
             <h2 className="text-secondary mb-5 text-2xl font-bold">Próximos Horários</h2>
