@@ -66,7 +66,7 @@ export function Dashboard() {
                         modifiers={{available: isWeeDay}}
                         onDayClick={handleDataChange}
                         locale={ptBR}
-                        fromDate={new Date()}
+                        fromMonth={new Date()}
                         classNames={{
                             day: "bg-white w-10 h-10 text-black m-[0.15rem] rounded-md"
                         }}

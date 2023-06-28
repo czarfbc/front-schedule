@@ -11,6 +11,7 @@ export default {
     colors: {
       'primary': '#348789',
       'secondary': '#001489',
+      'secondary-50': '#283dae',
       'gray-50': '#dddfeb',
       'gray-100': '#97909050',
       'gray-200': '#535653',
