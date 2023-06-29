@@ -38,7 +38,6 @@ export function Dashboard() {
                 date,
             }
         }).then((response) => {
-            console.log("🚀 ~ file: index.tsx:33 ~ useEffect ~ response:", response) 
             setSchedules(response.data)
         }).catch((error) => console.log(error))
     },[date])
@@ -66,7 +65,7 @@ export function Dashboard() {
                         modifiers={{available: isWeeDay}}
                         onDayClick={handleDataChange}
                         locale={ptBR}
-                        fromMonth={new Date()}
+                        fromDate={new Date()}
                         classNames={{
                             day: "bg-white w-10 h-10 text-black m-[0.15rem] rounded-md"
                         }}

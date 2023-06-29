@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 import { api } from "../server";
 import { isAxiosError } from 'axios';
 import { toast } from 'react-toastify';
@@ -11,6 +11,16 @@ interface IAuthContextData {
     signIn: ({email, password}: ISignIn) => void
     signOut: () => void
     user: IUserData
+    availableSchedules: Array<string>
+    schedules: Array<ISchedules>
+    date: string
+    handleSetDate: (date: string) => void
+}
+interface ISchedules {
+    id: string;
+    name: string;
+	phone: string;
+	date: Date;
 }
 interface ISignIn {
     email: string
@@ -25,7 +35,21 @@ interface IUserData {
 export const AuthContext = createContext({} as IAuthContextData)
 
 export function AuthProvider({children}: IAuthProvider) {
-
+    const [schedules, setSchedules] = useState<Array<ISchedules>>([])
+    const [date, setDate] = useState('')
+    const availableSchedules =  [
+        '09',
+        '10',
+        '11',
+        '12',
+        '13',
+        '14',
+        '15',
+        '16',
+        '17',
+        '18',
+        '19',
+    ]
     const [user, setUser] = useState(() => {
         const user = localStorage.getItem('user:semana-heroi')
         if(user) {
@@ -35,6 +59,21 @@ export function AuthProvider({children}: IAuthProvider) {
     })
 
     const navigate = useNavigate()
+    const handleSetDate = (date: string) => {
+        setDate(date)
+    }
+
+    useEffect(() => {
+        api.get('/schedules', {
+            params: {
+                date,
+            }
+        }).then((response) => {
+            console.log("🚀 ~ file: AuthContext.tsx:72 ~ useEffect ~ response:", response)
+            setSchedules(response.data)
+        }).catch((error) => console.log(error))
+    },[date])
+
     async function signIn({ email, password }: ISignIn) {
         try {
             const {data} = await api.post('/users/auth', {
@@ -73,7 +112,7 @@ export function AuthProvider({children}: IAuthProvider) {
         navigate('/')
     }
     return(
-        <AuthContext.Provider value={{ signIn, signOut, user }}>
+        <AuthContext.Provider value={{ signIn, signOut, user, availableSchedules, schedules, date, handleSetDate }}>
             {children}
         </AuthContext.Provider>
     )

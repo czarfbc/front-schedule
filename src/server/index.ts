@@ -10,7 +10,7 @@ const api =  axios.create({
 })
 
 const refreshSubscribers: Array<(token: string) => void > = []
-
+let isRefreshing = false;
 let failedRequest: Array<IRefreshConfig> = []
 
 api.interceptors.request.use((config) => {
@@ -28,13 +28,13 @@ api.interceptors.response.use((response) => response, async (error: AxiosError |
 
             try {
                 const refresh = localStorage.getItem(`refresh_token:semana-heroi`)
-                const response = await api.post('/refresh', {
+                const response = await api.post('/users/refresh', {
                     refresh_token: refresh
                 })
                 const {token, refresh_token} = response.data
                 localStorage.setItem('token:semana-heroi', token)
                 localStorage.setItem('refresh_token:semana-heroi', refresh_token)
-
+                isRefreshing = false;
                 onRefreshed(token)
 
                 if(originalRequest?.headers) {
@@ -49,6 +49,13 @@ api.interceptors.response.use((response) => response, async (error: AxiosError |
 
                 failedRequest = []
             }
+            return new Promise((resolve, reject) => {
+                failedRequest.push({
+                    ...originalRequest,
+                    onSuccess: (response) => resolve(response),
+                    onFailure: (error) => reject(error)
+                })
+            })
         }
     }else{
         // localStorage.removeItem('token:semana-heroi')
