@@ -8,7 +8,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { AiOutlineMail } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { BsPersonBadge } from 'react-icons/bs'
-import { api } from '../../server'
+// import { api } from '../../server'
+// import { toast } from 'react-toastify'
+import { UseAuth } from '../../hooks/auth'
 
 interface IFormValues {
     name: string;
@@ -16,6 +18,8 @@ interface IFormValues {
     password: string;
 }
 export function Register() {
+    const {createUser} = UseAuth()
+
     const schema = yup.object().shape({
         name: yup.string().required('Campo de nome obrigatório'),
         email: yup.string().email('Digite um email válido').required('Campo de email obrigatório'),
@@ -23,12 +27,11 @@ export function Register() {
     })
     const { register, handleSubmit, formState: {errors} } = useForm<IFormValues>({resolver: yupResolver(schema)})
     const submit = handleSubmit(async ({name, email, password}) => {
-        const result = await api.post('/users', {
-            name,
-            email,
-            password,
-        })
-        console.log("🚀 ~ file: index.tsx:31 ~ submit ~ result:", result)
+        try {
+            createUser({name, email, password})
+        } catch (error) {
+            console.log("🚀 ~ file: index.tsx:33 ~ submit ~ error:", error)
+        }
     })
     return(
         <div className="h-screen bg-no-repeat bg-cover bg-[url('./assets/cadastro.webp')]">

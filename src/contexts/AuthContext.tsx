@@ -10,6 +10,7 @@ interface IAuthProvider {
 interface IAuthContextData {
     signIn: ({email, password}: ISignIn) => void
     signOut: () => void
+    createUser: ({name, email, password }: ICreateUser) => void
     user: IUserData
     availableSchedules: Array<string>
     schedules: Array<ISchedules>
@@ -30,6 +31,11 @@ interface IUserData {
     name: string
     avatar_url: string
     email: string
+}
+interface ICreateUser {
+    name: string
+    email: string
+    password: string
 }
 
 export const AuthContext = createContext({} as IAuthContextData)
@@ -74,6 +80,29 @@ export function AuthProvider({children}: IAuthProvider) {
         }).catch((error) => console.log(error))
     },[date])
 
+    async function createUser({name, email, password }: ICreateUser) {
+        try {
+            const {data} = await api.post('/users', {
+                name,
+                email,
+                password,
+            })
+
+            navigate('/')
+            toast.success('Conta criada com sucesso')
+
+            return data
+        } catch (error) {
+            console.log("🚀 ~ file: AuthContext.tsx:37 ~ signIn ~ error:", error)
+            
+            if(isAxiosError(error)) {
+                toast.error(error.response?.data.message)
+            }else{
+                toast.error('Não foi possível criar a conta. Tente mais tarde')
+            }
+        }
+    }
+
     async function signIn({ email, password }: ISignIn) {
         try {
             const {data} = await api.post('/users/auth', {
@@ -96,8 +125,6 @@ export function AuthProvider({children}: IAuthProvider) {
             
             return data
         } catch (error) {
-            console.log("🚀 ~ file: AuthContext.tsx:37 ~ signIn ~ error:", error)
-            
             if(isAxiosError(error)) {
                 toast.error(error.response?.data.message)
             }else{
@@ -112,7 +139,7 @@ export function AuthProvider({children}: IAuthProvider) {
         navigate('/')
     }
     return(
-        <AuthContext.Provider value={{ signIn, signOut, user, availableSchedules, schedules, date, handleSetDate }}>
+        <AuthContext.Provider value={{ signIn, signOut, user, availableSchedules, schedules, date, handleSetDate, createUser }}>
             {children}
         </AuthContext.Provider>
     )
