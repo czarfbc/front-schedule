@@ -17,21 +17,28 @@ interface ISchedules {
 	date: Date;
 }
 export function Dashboard() {
-
     const [date, setDate] = useState(new Date())
     const [schedules, setSchedules] = useState<Array<ISchedules>>([])
     const {user} = UseAuth()
-    const isWeekend = (date: Date) => {
+
+    const limitBackDate = new Date();
+    limitBackDate.setMonth(limitBackDate.getMonth() - 3);
+
+    // const isWeekend = (date: Date) => {
+    //     const day = date.getDay()
+    //     return day === 0 || day === 6
+    // }
+
+    const isWeekDay = (date: Date) => { 
         const day = date.getDay()
-        return day === 0 || day === 6
+        console.log(day)
+        return day === day
     }
-    const isWeeDay = (date: Date) => { 
-        const day = date.getDay()
-        return day !== 0 && day !== 6
-    }
+
     const handleDataChange = (date: Date) => {
         setDate(date)
     }
+
     useEffect(() => {
         api.get('/schedules', {
             params: {
@@ -41,6 +48,7 @@ export function Dashboard() {
             setSchedules(response.data)
         }).catch((error) => console.log(error))
     },[date])
+
     return(
         <div className="max-w-[1340px] mx-auto px-4 w-full">
             <Header/>
@@ -52,6 +60,7 @@ export function Dashboard() {
             <div className="flex justify-between">
                 <div className={`w-1/2 px-4 max-h-[60vh] overflow-y-auto scroll-smooth ${style.cardWrapper}`}>
                     {schedules.map((schedules, index) => {
+                        //console.log(schedules)
                         return(
                             <Card key={index} id={schedules.id} date={schedules.date} name={schedules.name} phone={schedules.phone} />
                         )
@@ -61,16 +70,18 @@ export function Dashboard() {
                     <DayPicker className="bg-primary h-fit p-4 rounded-[10px] text-white shadow-[0_4px_8px_4px_rgba(0,0,0,0.3)]" 
                         selected={date} 
                         mode="single" 
-                        disabled={isWeekend} 
-                        modifiers={{available: isWeeDay}}
+                        //disabled={isWeekend} 
+                        modifiers={{available: isWeekDay}}
                         onDayClick={handleDataChange}
                         locale={ptBR}
-                        fromDate={new Date()}
+                        fromMonth={limitBackDate}
                         classNames={{
-                            day: "bg-white w-10 h-10 text-black m-[0.15rem] rounded-md"
+                            day: `${style.day} bg-white w-10 h-10 text-black m-[0.15rem] rounded-md`,
+                            nav_button_previous: style.nav_button_previous,
+                            nav_button_next: style.nav_button_next,
                         }}
                         modifiersClassNames={{
-                            selected: style.selected
+                            selected: style.selected,
                         }}
                     />
                 </div>

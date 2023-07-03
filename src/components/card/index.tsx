@@ -17,6 +17,7 @@ export const Card = ({id, name, date, phone}: ISchedules) => {
 
     const dateFormatted = new Date(date)
     const hour = getHours(dateFormatted) 
+    console.log("🚀 ~ file: index.tsx:20 ~ Card ~ hour:", hour)
 
     let phoneFormatted = phone.replace(/\D/g, '')
     phoneFormatted = phoneFormatted.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3')

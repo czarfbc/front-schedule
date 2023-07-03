@@ -10,7 +10,7 @@ interface IModal {
     isOpen: boolean
     handleChangeModal: () => void
     name: string
-    hour: number
+    hour: string
     id: string
 }
 export function ModalEdit({isOpen, handleChangeModal, hour, name, id}: IModal) {

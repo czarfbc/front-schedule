@@ -75,7 +75,7 @@ export function AuthProvider({children}: IAuthProvider) {
                 date,
             }
         }).then((response) => {
-            console.log("🚀 ~ file: AuthContext.tsx:72 ~ useEffect ~ response:", response)
+            //console.log("🚀 ~ file: AuthContext.tsx:78 ~ useEffect ~ response:", response)
             setSchedules(response.data)
         }).catch((error) => console.log(error))
     },[date])
