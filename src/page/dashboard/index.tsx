@@ -31,7 +31,7 @@ export function Dashboard() {
 
     const isWeekDay = (date: Date) => { 
         const day = date.getDay()
-        console.log(day)
+        //console.log(day)
         return day === day
     }
 

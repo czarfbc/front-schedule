@@ -1,6 +1,6 @@
 import { AiOutlineClose } from "react-icons/ai"
 import { UseAuth } from "../../hooks/auth"
-import { getHours } from "date-fns"
+import { formatISO, getHours, parseISO, setHours } from "date-fns"
 import { useState } from "react"
 import { api } from "../../server"
 import { toast } from 'react-toastify';
@@ -16,7 +16,7 @@ interface IModal {
 export function ModalEdit({isOpen, handleChangeModal, hour, name, id}: IModal) {
     const { availableSchedules, schedules, date, handleSetDate } = UseAuth()
     const [hourSchedule, setHourSchedule] = useState('')
-    console.log("🚀 ~ file: index.tsx:19 ~ ModalEdit ~ hourSchedule:", hourSchedule)
+    //console.log("🚀 ~ file: index.tsx:19 ~ ModalEdit ~ hourSchedule:", hourSchedule)
 
     const currentValue = new Date().toISOString().split('T')[0]
 
@@ -28,24 +28,23 @@ export function ModalEdit({isOpen, handleChangeModal, hour, name, id}: IModal) {
         })
         return isSchedulesAvailable
     })
+    //console.log("🚀 ~ file: index.tsx:31 ~ filteredDate ~ filteredDate:", filteredDate)
 
     const handleChangeHour = (hour: string) => {
         setHourSchedule(hour)
     }
 
     const updateData = async () => {
+        const formattedDate = formatISO(setHours(parseISO(date), parseInt(hourSchedule)),)
         try {     
             await api.put(`/schedules/${id}`, {
-                params: {
-                    date: date,
-                }
+                date: formattedDate,
             })
             toast.success('Atualizado com sucesso')
             handleChangeModal()
         } catch (error) {
             if(isAxiosError(error)){
                 toast.error(error.response?.data.message)
-                console.log("🚀 ~ file: index.tsx:48 ~ updateData ~ error.response?.data.message:", error.response?.data.message)
             }
         }
     }
@@ -73,10 +72,11 @@ export function ModalEdit({isOpen, handleChangeModal, hour, name, id}: IModal) {
                         </div>
 
                         <div className="text-primary flex justify-between mb-6 items-center">
-                            <label>Indique uma nova data</label>
+                            <label>Indique uma nova hora</label>
                             <select 
                                 onChange={(e) => handleChangeHour(e.target.value)}
                                 className="border-solid border-[1px] border-primary rounded-[10px] w-2/5 p-1 text-primary cursor-pointer">
+                                    <option>nova hora</option>
                                 {
                                     filteredDate.map((hour, index) => {
                                         return(

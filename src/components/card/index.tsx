@@ -4,6 +4,9 @@ import { getHours, isAfter } from "date-fns";
 import style from './card.module.css'
 import { useState } from "react";
 import { ModalEdit } from "../modalEdit";
+import { isAxiosError } from "axios";
+import { toast } from "react-toastify";
+import { api } from "../../server";
 
 interface ISchedules {
     id: string;
@@ -17,7 +20,7 @@ export const Card = ({id, name, date, phone}: ISchedules) => {
 
     const dateFormatted = new Date(date)
     const hour = getHours(dateFormatted) 
-    console.log("🚀 ~ file: index.tsx:20 ~ Card ~ hour:", hour)
+    //console.log("🚀 ~ file: index.tsx:20 ~ Card ~ hour:", hour)
 
     let phoneFormatted = phone.replace(/\D/g, '')
     phoneFormatted = phoneFormatted.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3')
@@ -25,6 +28,16 @@ export const Card = ({id, name, date, phone}: ISchedules) => {
     const handleChangeModal = () => {
         setOpenModal(!openModal)
     } 
+    const handleDelete = async () => {
+        try {
+          const result = await api.delete(`/schedules/${id}`);
+          toast.success('Deletado com sucesso');
+        } catch (error) {
+          if (isAxiosError(error)) {
+            toast.error(error.response?.data.message);
+          }
+        }
+    }
     return(
         <>
             <div className="flex bg-white rounded-lg justify-between items-center mb-5 shadow-[0_4px_8px_4px_rgba(0,0,0,0.3)]">
@@ -35,11 +48,27 @@ export const Card = ({id, name, date, phone}: ISchedules) => {
                     <p className="text-primary text-xl">{name} - {phoneFormatted}</p>
                 </div>
                 <div className="flex mr-2 gap-2">
-                    <AiOutlineEdit size={20} color="#5F68B1" onClick={() => isAfterDate && handleChangeModal()} className="cursor-pointer" />
-                    <RiDeleteBinLine size={20} color="#EB2E2E" className="cursor-pointer" />
+                    <AiOutlineEdit 
+                        size={20} 
+                        color="#5F68B1" 
+                        onClick={() => isAfterDate && handleChangeModal()} 
+                        className="cursor-pointer" 
+                    />
+                    <RiDeleteBinLine 
+                        size={20} 
+                        color="#EB2E2E" 
+                        onClick={() => isAfterDate && handleDelete()} 
+                        className="cursor-pointer" 
+                    />
                 </div>
             </div>
-            <ModalEdit isOpen={openModal} handleChangeModal={handleChangeModal} hour={hour} name={name} id={id} />
+            <ModalEdit 
+                isOpen={openModal} 
+                handleChangeModal={handleChangeModal} 
+                hour={String(hour)} 
+                name={name} 
+                id={id} 
+            />
         </>
     )
 }
