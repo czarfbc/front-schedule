@@ -67,6 +67,7 @@ export function AuthProvider({children}: IAuthProvider) {
     const navigate = useNavigate()
     const handleSetDate = (date: string) => {
         setDate(date)
+        console.log("🚀 ~ file: AuthContext.tsx:70 ~ handleSetDate ~ date:", date)
     }
 
     useEffect(() => {
