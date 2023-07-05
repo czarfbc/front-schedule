@@ -21,8 +21,8 @@ export function Dashboard() {
     const [schedules, setSchedules] = useState<Array<ISchedules>>([])
     const {user} = UseAuth()
 
-    const limitBackMonthDate = new Date();
-    limitBackMonthDate.setMonth(limitBackMonthDate.getMonth() - 3);
+    const limitBackDate = new Date();
+    limitBackDate.setMonth(limitBackDate.getMonth() - 3);
 
     // const isWeekend = (date: Date) => {
     //     const day = date.getDay()
@@ -74,7 +74,7 @@ export function Dashboard() {
                         modifiers={{available: isWeekDay}}
                         onDayClick={handleDataChange}
                         locale={ptBR}
-                        fromMonth={limitBackMonthDate}
+                        fromMonth={limitBackDate}
                         classNames={{
                             day: `${style.day} bg-white w-10 h-10 text-black m-[0.15rem] rounded-md`,
                             nav_button_previous: style.nav_button_previous,
