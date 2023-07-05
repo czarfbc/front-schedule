@@ -18,10 +18,9 @@ export function ModalEdit({isOpen, handleChangeModal, hour, name, id, minutes}: 
     const { availableSchedules, schedules, date, handleSetDate } = UseAuth()
     const [hourSchedule, setHourSchedule] = useState('')
     const [minuteSchedule, setMinuteSchedule] = useState('')
-    //console.log("🚀 ~ file: index.tsx:21 ~ ModalEdit ~ minuteSchedule:", minuteSchedule)
-    //console.log("🚀 ~ file: index.tsx:19 ~ ModalEdit ~ hourSchedule:", hourSchedule)
 
     const currentValue = new Date().toISOString().split('T')[0]
+    const defaultValueInputDate = ''
 
     // const  filteredDate = availableSchedules.filter((hour) => {
     //     const isSchedulesAvailable = !schedules.find((schedulesItem) => {
@@ -84,7 +83,7 @@ export function ModalEdit({isOpen, handleChangeModal, hour, name, id, minutes}: 
                             <label>Indique uma nova data</label>
                             <input 
                                 type="date" 
-                                defaultValue={currentValue} 
+                                defaultValue={defaultValueInputDate} 
                                 onChange={(e) => handleSetDate(e.target.value)} 
                                 min={currentValue}
                                 className="border-solid border-[1px] border-primary rounded-[10px] w-2/5 p-1 text-primary cursor-text"
@@ -120,13 +119,15 @@ export function ModalEdit({isOpen, handleChangeModal, hour, name, id, minutes}: 
                     <div className="flex justify-between pt-0 px-8 pb-8">
                         <button 
                             onClick={handleChangeModal} 
-                            className="cursor-pointer no-underline font-light rounded-2xl py-1 px-6 w-1/3 border-solid border-[1px] border-secondary bg-none text-secondary hover:bg-gray-50">
-                                Cancelar
+                            className="cursor-pointer no-underline font-light rounded-2xl py-1 px-6 w-1/3 border-solid border-[1px] border-secondary bg-none text-secondary hover:bg-gray-50"
+                        >
+                            Cancelar
                         </button>
                         <button 
                             onClick={updateData}
-                            className="cursor-pointer no-underline font-light rounded-2xl py-1 px-6 w-1/3 border-solid border-[1px] border-secondary bg-secondary text-white hover:bg-secondary-50">
-                                Editar
+                            className="cursor-pointer no-underline font-light rounded-2xl py-1 px-6 w-1/3 border-solid border-[1px] border-secondary bg-secondary text-white hover:bg-secondary-50"
+                        >
+                            Editar
                         </button>
                     </div>
                 </div>

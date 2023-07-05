@@ -16,6 +16,7 @@ interface IAuthContextData {
     schedules: Array<ISchedules>
     date: string
     handleSetDate: (date: string) => void
+    isAutheticated: boolean
 }
 interface ISchedules {
     id: string;
@@ -63,11 +64,11 @@ export function AuthProvider({children}: IAuthProvider) {
         }
         return {}
     })
+    const isAutheticated = !!user && Object.keys(user).length !== 0
 
     const navigate = useNavigate()
     const handleSetDate = (date: string) => {
         setDate(date)
-        console.log("🚀 ~ file: AuthContext.tsx:70 ~ handleSetDate ~ date:", date)
     }
 
     useEffect(() => {
@@ -140,7 +141,7 @@ export function AuthProvider({children}: IAuthProvider) {
         navigate('/')
     }
     return(
-        <AuthContext.Provider value={{ signIn, signOut, user, availableSchedules, schedules, date, handleSetDate, createUser }}>
+        <AuthContext.Provider value={{ signIn, signOut, user, availableSchedules, schedules, date, handleSetDate, createUser, isAutheticated }}>
             {children}
         </AuthContext.Provider>
     )

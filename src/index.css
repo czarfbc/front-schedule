@@ -23,3 +23,12 @@ body{
     background-color: #dddfeb;
     -webkit-font-smoothing: antialiased;
 }
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    
+}
+input[type=number] { 
+   -moz-appearance: textfield;
+   appearance: textfield;
+
+}
