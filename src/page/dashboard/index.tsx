@@ -74,7 +74,7 @@ export function Dashboard() {
                         modifiers={{available: isWeekDay}}
                         onDayClick={handleDataChange}
                         locale={ptBR}
-                        fromMonth={limitBackDate}
+                        fromDate={limitBackDate}
                         classNames={{
                             day: `${style.day} bg-white w-10 h-10 text-black m-[0.15rem] rounded-md`,
                             nav_button_previous: style.nav_button_previous,

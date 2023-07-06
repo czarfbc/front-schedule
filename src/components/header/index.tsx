@@ -22,10 +22,12 @@ export function Header() {
                     {
                         open && (
                             <ul className='absolute top-[100%] right-[-1.5rem] p-0 list-none rounded-lg opacity-1 transition-all bg-primary drop-shadow-[0px_9px_4px_rgba(0,0,0,0.25)]'>
-                                <Link to={'/schedules'}>
-                                    <li className='py-3 px-4 hover:bg-[#64a2a4] rounded-t-lg'>Agendamentos</li>
+                                <Link to={'/dashboard'}>
+                                    <li className='py-3 px-4 hover:bg-[#64a2a4]'>Dashboard</li>
                                 </Link>
-                                <li className='py-3 px-4 hover:bg-[#64a2a4]'>Editar Perfil</li>
+                                <Link to={'/schedules'}>
+                                    <li className='py-3 px-4 hover:bg-[#64a2a4] rounded-t-lg'>Agendar</li>
+                                </Link>
                                 <li onClick={signOut} className='py-3 px-4 hover:bg-[#64a2a4] rounded-b-lg'>Sair</li>
                             </ul>
                         )

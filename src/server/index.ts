@@ -58,9 +58,9 @@ api.interceptors.response.use((response) => response, async (error: AxiosError |
             })
         }
     }else{
-        // localStorage.removeItem('token:semana-heroi')
-        // localStorage.removeItem('refresh_token:semana-heroi')
-        // localStorage.removeItem('user:semana-heroi')
+        localStorage.removeItem('token:semana-heroi')
+        localStorage.removeItem('refresh_token:semana-heroi')
+        localStorage.removeItem('user:semana-heroi')
     }
 
     return Promise.reject(error)
