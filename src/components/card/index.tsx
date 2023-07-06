@@ -1,6 +1,6 @@
 import { RiDeleteBinLine } from "react-icons/ri"
 import { AiOutlineEdit } from "react-icons/ai"
-import { getHours, isAfter, getMinutes } from "date-fns";
+import { isAfter } from "date-fns";
 import style from './card.module.css'
 import { useState } from "react";
 import { ModalEdit } from "../modalEdit";
@@ -19,9 +19,11 @@ export const Card = ({id, name, date, phone}: ISchedules) => {
     const [openModal, setOpenModal] = useState<boolean>(false) 
 
     const dateFormatted = new Date(date)
-    const hour = getHours(dateFormatted) 
-    const minutes = getMinutes(dateFormatted)
-    //console.log("🚀 ~ file: index.tsx:20 ~ Card ~ hour:", hour)
+    const hourMinutesFormatted = dateFormatted
+    const hourMinutesValues = hourMinutesFormatted.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    
+    const hour = hourMinutesValues.split(':')[0]
+    const minutes = hourMinutesValues.split(':')[1]
 
     let phoneFormatted = phone.replace(/\D/g, '')
     phoneFormatted = phoneFormatted.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3')
