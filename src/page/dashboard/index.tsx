@@ -24,14 +24,8 @@ export function Dashboard() {
     const limitBackDate = new Date();
     limitBackDate.setMonth(limitBackDate.getMonth() - 3);
 
-    // const isWeekend = (date: Date) => {
-    //     const day = date.getDay()
-    //     return day === 0 || day === 6
-    // }
-
     const isWeekDay = (date: Date) => { 
         const day = date.getDay()
-        //console.log(day)
         return day === day
     }
 
@@ -60,7 +54,6 @@ export function Dashboard() {
             <div className="flex justify-between">
                 <div className={`w-1/2 px-4 max-h-[60vh] overflow-y-auto scroll-smooth ${style.cardWrapper}`}>
                     {schedules.map((schedules, index) => {
-                        //console.log(schedules)
                         return(
                             <Card key={index} id={schedules.id} date={schedules.date} name={schedules.name} phone={schedules.phone} />
                         )

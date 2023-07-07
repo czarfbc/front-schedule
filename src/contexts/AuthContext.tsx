@@ -77,7 +77,6 @@ export function AuthProvider({children}: IAuthProvider) {
                 date,
             }
         }).then((response) => {
-            //console.log("🚀 ~ file: AuthContext.tsx:78 ~ useEffect ~ response:", response)
             setSchedules(response.data)
         }).catch((error) => console.log(error))
     },[date])
@@ -95,8 +94,6 @@ export function AuthProvider({children}: IAuthProvider) {
 
             return data
         } catch (error) {
-            console.log("🚀 ~ file: AuthContext.tsx:37 ~ signIn ~ error:", error)
-            
             if(isAxiosError(error)) {
                 toast.error(error.response?.data.message)
             }else{

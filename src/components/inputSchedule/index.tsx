@@ -1,4 +1,4 @@
-import { ForwardRefRenderFunction, ReactNode, forwardRef } from 'react';
+import { ForwardRefRenderFunction, forwardRef } from 'react';
 
 interface IInput {
     type: 'password' | 'email' | 'date' | 'text' | 'number';

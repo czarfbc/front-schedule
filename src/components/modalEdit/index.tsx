@@ -22,16 +22,6 @@ export function ModalEdit({isOpen, handleChangeModal, hour, name, id, minutes}: 
     const currentValue = new Date().toISOString().split('T')[0]
     const defaultValueInputDate = ''
 
-    // const  filteredDate = availableSchedules.filter((hour) => {
-    //     const isSchedulesAvailable = !schedules.find((schedulesItem) => {
-    //         const scheduleDate = new Date(schedulesItem.date)
-    //         const scheduleHour = getHours(scheduleDate)
-    //         const scheduleMinutes = getMinutes(scheduleDate)
-    //         return scheduleHour === Number(hour) && scheduleMinutes
-    //     })
-    //     console.log("🚀 ~ file: index.tsx:32 ~ filteredDate ~ isSchedulesAvailable:", isSchedulesAvailable)
-    //     return isSchedulesAvailable
-    // })
     const isSchedulesAvailable = !schedules.find((schedulesItem) => {
         const scheduleDate = new Date(schedulesItem.date)
         const scheduleHour = getHours(scheduleDate)
@@ -53,8 +43,7 @@ export function ModalEdit({isOpen, handleChangeModal, hour, name, id, minutes}: 
 
         const concatenatedDate = `${datePart1}${timePart2}`;
         const formattedDate = concatenatedDate;
-        console.log("🚀 ~ file: index.tsx:57 ~ updateData ~ formattedDate:", formattedDate)
-
+    
         try {     
             await api.put(`/schedules/${id}`, {
                 date: formattedDate,
@@ -100,20 +89,6 @@ export function ModalEdit({isOpen, handleChangeModal, hour, name, id, minutes}: 
                                 }}
                                 className="border-solid border-[1px] border-primary rounded-[10px] w-2/5 p-1 text-primary cursor-text"
                             />
-                            {/* <select 
-                                onChange={(e) => handleChangeHour(e.target.value)}
-                                className="border-solid border-[1px] border-primary rounded-[10px] w-2/5 p-1 text-primary cursor-pointer">
-                                    <option>nova hora</option>
-                                {
-                                    filteredDate.map((hour, index) => {
-                                        return(
-                                            <option value={hour} key={index}>
-                                                {hour}:00
-                                            </option>
-                                        )
-                                    })
-                                }
-                            </select> */}
                         </div>
                     </div>
                     <div className="flex justify-between pt-0 px-8 pb-8">

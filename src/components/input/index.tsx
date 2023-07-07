@@ -13,7 +13,15 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, IInput> = ({placehol
                 <i aria-hidden="true" className="absolute pl-2 left-0 flex items-center">
                     {icon}
                 </i>
-                <input name="" id="" placeholder={placeholder} ref={ref} type={type} {...rest} className='w-full py-[0.7rem] px-[2.2rem] rounded-lg border-[1px] border-gray-50 border-solid bg-white text-base' />
+                <input 
+                    name="" 
+                    id="" 
+                    placeholder={placeholder} 
+                    ref={ref} 
+                    type={type} 
+                    {...rest} 
+                    className='w-full py-[0.7rem] px-[2.2rem] rounded-lg border-[1px] border-gray-50 border-solid bg-white text-base' 
+                />
             </label>
             {error && <span className='text-[#ff0000] font-bold'>{error}</span>}
         </div>

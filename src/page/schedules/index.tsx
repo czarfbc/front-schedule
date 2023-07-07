@@ -28,38 +28,18 @@ export function Schedules() {
     const navigate = useNavigate()
 
     const { handleSetDate } = UseAuth()
-    //console.log("🚀 ~ file: index.tsx:12 ~ Schedules ~ date:", date)
+
     const [hourSchedule, setHourSchedule] = useState('')
     const [minuteSchedule, setMinuteSchedule] = useState('')
 
-    const currentValue = new Date().toISOString().split('T')[0]
     const defaultValueInputDate = ''
-
-    // const  filteredDate = availableSchedules.filter((hour) => {
-    //     const isSchedulesAvailable = !schedules.find((schedulesItem) => {
-    //         const scheduleDate = new Date(schedulesItem.date)
-    //         const scheduleHour = getHours(scheduleDate)
-    //         const scheduleMinutes = getMinutes(scheduleDate)
-    //         return scheduleHour === Number(hour) && scheduleMinutes
-    //     })
-    //     return isSchedulesAvailable
-    // })
-    //console.log("🚀 ~ file: index.tsx:28 ~ filteredDate ~ filteredDate:", filteredDate)
-    // const isSchedulesAvailable = !schedules.find((schedulesItem) => {
-    //     const scheduleDate = new Date(schedulesItem.date)
-    //     const scheduleHour = getHours(scheduleDate)
-    //     const scheduleMinutes = getMinutes(scheduleDate)
-    //     return scheduleHour === Number(hour) && scheduleMinutes
-    // })
-
-    
+ 
     const handleChangeHour = (hour: string, minutes: string) => {
         setHourSchedule(hour)
         setMinuteSchedule(minutes)
     }
 
     const submit = handleSubmit( async ({name, phone, date}) => {
-        //console.log("🚀 ~ file: index.tsx:51 ~ submit ~ hour:", hour)
         const formattedHoursDate = formatISO(setHours(parseISO(date), parseInt(hourSchedule)))
         const formattedMinutesDate = formatISO(setMinutes(parseISO(date), parseInt(minuteSchedule)))
 
@@ -68,7 +48,6 @@ export function Schedules() {
 
         const concatenatedDate = `${datePart1}${timePart2}`;
         const formattedDate = concatenatedDate;
-        
 
         try {     
             await api.post(`/schedules/`, {
@@ -76,7 +55,6 @@ export function Schedules() {
                 phone,
                 date: formattedDate,
             })
-            console.log("🚀 ~ file: index.tsx:57 ~ updateData ~ formattedDate:", formattedDate)
             toast.success('Agendado com sucesso')
             navigate('/dashboard')
         } catch (error) {
@@ -108,10 +86,10 @@ export function Schedules() {
                             type="date" 
                             label="Dia" 
                             {...register('date', 
-                                {   required: true, 
+                                {   
+                                    required: true, 
                                     value: defaultValueInputDate, 
-                                    onChange: (e) => handleSetDate(e.target.value), 
-                                    min: currentValue
+                                    onChange: (e) => handleSetDate(e.target.value),  
                                 }
                             )} 
                             error={errors.date && errors.date.message}
