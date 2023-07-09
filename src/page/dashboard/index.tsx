@@ -52,7 +52,7 @@ export function Dashboard() {
             </div>
             <h2 className="text-secondary mx-4 mb-5 md:text-xl lg:text-2xl font-bold">Próximos Horários</h2>
             <div className="flex md:justify-evenly md:flex-col md:items-center lg:items-start lg:justify-between lg:flex-row">
-                <div className={`md:w-full md:flex md:flex-col md:items-center lg:hidden lg:w-1/2 max-h-[60vh] overflow-y-auto scroll-smooth ${style.cardWrapper}`}>
+            <div className={`w-1/2 px-4 max-h-[60vh] overflow-y-auto scroll-smooth ${style.cardWrapper}`}>
                     {schedules.map((schedules, index) => {
                         return(
                             <Card key={index} id={schedules.id} date={schedules.date} name={schedules.name} phone={schedules.phone} />
