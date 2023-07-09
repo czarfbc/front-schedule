@@ -37,12 +37,12 @@ export function Register() {
         <div className="h-screen bg-no-repeat bg-cover bg-[url('./assets/cadastro.webp')]">
             <div className="w-full px-4 mx-auto max-w-[1340px]">
                 <p className="text-white pt-8"><Link to={'/'}>Home</Link> {'>'} Área de Cadastro</p>
-                <div className='w-full flex items-center h-screen'>
-                    <div className='flex w-1/2 justify-center'>
+                <div className='w-full flex flex-col justify-evenly items-center h-screen xl:flex-row'>
+                    <div className='flex sm:w-1/5 md:w-1/3 xl:w-1/2 justify-center'>
                         <img src={logo} alt="" />
                     </div>
-                    <div className='w-1/2 bg-gray-100 shadow-[0px_4px_8px_4px_rgba(0,0,0,0.2)] rounded-3xl p-12 text-center'>
-                        <h2 className='text-white not-italic text-[2rem] font-light mb-8'>Área de Cadastro</h2>
+                    <div className='w-1/2 bg-gray-100 shadow-[0px_4px_8px_4px_rgba(0,0,0,0.2)] rounded-3xl sm:px-4 sm:py-8 md:p-12 text-center'>
+                        <h2 className='text-white not-italic sm:text-xl lg:text-3xl font-light mb-8'>Área de Cadastro</h2>
                         <form onSubmit={submit}>
                             <Input 
                                 placeholder='Nome' 
@@ -68,7 +68,7 @@ export function Register() {
                             <Button text='Cadastrar'/>
                         </form>
                         <div className='text-left mt-4'>
-                            <span className='text-white font-light text-sm'>Já tem cadastro <Link to={'/'} className='text-white underline'>Voltar à página inicial</Link> </span>
+                            <span className='text-white font-light sm:text-[0.65rem] md:text-sm'>Já tem cadastro <Link to={'/'} className='text-white underline'>Voltar à página inicial</Link> </span>
                         </div>
                     </div>
                 </div>

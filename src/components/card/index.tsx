@@ -43,14 +43,14 @@ export const Card = ({id, name, date, phone}: ISchedules) => {
     }
     return(
         <>
-            <div className="flex bg-white rounded-lg justify-between items-center mb-5 shadow-[0_4px_8px_4px_rgba(0,0,0,0.3)]">
+            <div className="flex mx-4 md:w-fit lg:w-auto bg-white rounded-lg justify-between items-center mb-5 shadow-[0px_8px_10px_0px_rgba(0,0,0,0.3)]">
                 <div className="flex items-center">
-                    <span className={`${!isAfterDate && style.oldHour} bg-secondary text-white rounded-s-lg p-[0.8rem] mr-8`}>
+                    <span className={`${!isAfterDate && style.oldHour} md:text-sm lg:text-xl bg-secondary text-white rounded-s-lg p-[0.8rem] md:mr-4 lg:mr-8`}>
                         {hour}:{minutes}h
                     </span>
-                    <p className="text-primary text-xl">{name} - {phoneFormatted}</p>
+                    <p className="text-primary md:text-sm lg:text-xl">{name} - {phoneFormatted}</p>
                 </div>
-                <div className="flex mr-2 gap-2">
+                <div className="flex mx-2 gap-2">
                     <AiOutlineEdit 
                         size={20} 
                         color="#5F68B1" 

@@ -20,7 +20,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, IInput> = ({placehol
                     ref={ref} 
                     type={type} 
                     {...rest} 
-                    className='w-full py-[0.7rem] px-[2.2rem] rounded-lg border-[1px] border-gray-50 border-solid bg-white text-base' 
+                    className='w-full sm:py-2 sm:px-7 md:py-[0.7rem] md:px-[2.2rem] rounded-lg border-[1px] border-gray-50 border-solid bg-white sm:text-sm md:text-base' 
                 />
             </label>
             {error && <span className='text-[#ff0000] font-bold'>{error}</span>}

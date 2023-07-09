@@ -44,23 +44,23 @@ export function Dashboard() {
     },[date])
 
     return(
-        <div className="max-w-[1340px] mx-auto px-4 w-full">
+        <div className="max-w-[1340px] mx-auto w-full">
             <Header/>
-            <div className="mt-6 mb-8 font-normal text-primary">
-                <h2 className="text-2xl">Bem vindo(a), <span className="font-bold">{user.name}</span></h2>
+            <div className="mt-6 mb-8 m-4 font-normal text-primary">
+                <h2 className="md:text-xl lg:text-2xl">Bem vindo(a), <span className="font-bold">{user.name}</span></h2>
                 <p>Esta é sua lista de horários {isToday(date) && <span>de hoje,</span>} dia {format(date, 'dd/MM/yyyy')}</p>
             </div>
-            <h2 className="text-secondary mb-5 text-2xl font-bold">Próximos Horários</h2>
-            <div className="flex justify-between">
-                <div className={`w-1/2 px-4 max-h-[60vh] overflow-y-auto scroll-smooth ${style.cardWrapper}`}>
+            <h2 className="text-secondary mx-4 mb-5 md:text-xl lg:text-2xl font-bold">Próximos Horários</h2>
+            <div className="flex md:justify-evenly md:flex-col md:items-center lg:items-start lg:justify-between lg:flex-row">
+                <div className={`md:w-full md:flex md:flex-col md:items-center lg:hidden lg:w-1/2 max-h-[60vh] overflow-y-auto scroll-smooth ${style.cardWrapper}`}>
                     {schedules.map((schedules, index) => {
                         return(
                             <Card key={index} id={schedules.id} date={schedules.date} name={schedules.name} phone={schedules.phone} />
                         )
                     })}
                 </div>
-                <div className="flex w-1/2 justify-center">
-                    <DayPicker className="bg-primary h-fit p-4 rounded-[10px] text-white shadow-[0_4px_8px_4px_rgba(0,0,0,0.3)]" 
+                <div className="flex md:w-1/3 lg:w-1/2 justify-center">
+                    <DayPicker className="bg-primary h-fit md:p-2 lg:p-4 rounded-[10px] text-white shadow-[0_4px_8px_4px_rgba(0,0,0,0.3)]" 
                         selected={date} 
                         mode="single" 
                         //disabled={isWeekend} 
