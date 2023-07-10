@@ -51,8 +51,8 @@ export function Dashboard() {
                 <p>Esta é sua lista de horários {isToday(date) && <span>de hoje,</span>} dia {format(date, 'dd/MM/yyyy')}</p>
             </div>
             <h2 className="text-secondary mx-4 mb-5 md:text-xl lg:text-2xl font-bold">Próximos Horários</h2>
-            <div className="flex md:justify-evenly md:flex-col md:items-center lg:items-start lg:justify-between lg:flex-row">
-            <div className={`w-1/2 px-4 max-h-[60vh] overflow-y-auto scroll-smooth ${style.cardWrapper}`}>
+            <div className="flex md:justify-evenly sm:flex-col md:items-center lg:items-start lg:justify-between lg:flex-row">
+                <div className={`flex flex-col sm:w-full md:px-4 lg:px-0 md:items-center lg:items-stretch lg:w-1/2 max-h-[60vh] overflow-x-hidden overflow-y-auto scroll-smooth ${style.cardWrapper}`}>
                     {schedules.map((schedules, index) => {
                         return(
                             <Card key={index} id={schedules.id} date={schedules.date} name={schedules.name} phone={schedules.phone} />
@@ -60,7 +60,7 @@ export function Dashboard() {
                     })}
                 </div>
                 <div className="flex md:w-1/3 lg:w-1/2 justify-center">
-                    <DayPicker className="bg-primary h-fit md:p-2 lg:p-4 rounded-[10px] text-white shadow-[0_4px_8px_4px_rgba(0,0,0,0.3)]" 
+                    <DayPicker className="bg-primary h-fit p-4 rounded-[10px] text-white shadow-[0_4px_8px_4px_rgba(0,0,0,0.3)]" 
                         selected={date} 
                         mode="single" 
                         //disabled={isWeekend} 

@@ -43,8 +43,8 @@ export const Card = ({id, name, date, phone}: ISchedules) => {
     }
     return(
         <>
-            <div className="flex mx-4 md:w-fit lg:w-auto bg-white rounded-lg justify-between items-center mb-5 shadow-[0px_8px_10px_0px_rgba(0,0,0,0.3)]">
-                <div className="flex items-center">
+            <div className="flex mx-4 sm:w-auto md:w-full lg:w-auto bg-white rounded-lg justify-between items-center mb-5 shadow-[0px_8px_10px_0px_rgba(0,0,0,0.3)]">
+                <div className="flex gap-2 items-center">
                     <span className={`${!isAfterDate && style.oldHour} md:text-sm lg:text-xl bg-secondary text-white rounded-s-lg p-[0.8rem] md:mr-4 lg:mr-8`}>
                         {hour}:{minutes}h
                     </span>

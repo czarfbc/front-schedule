@@ -66,8 +66,8 @@ export function Schedules() {
     return(
         <div className="max-w-[1340px] mx-auto px-4 w-full">
             <Header />
-            <h2 className="text-2xl font-light text-primary my-4">Agendamento de Horário</h2>
-            <div className="w-1/2 m-auto">
+            <h2 className="text-2xl font-light text-primary m-4">Agendamento de Horário</h2>
+            <div className="sm:w-3/4 lg:w-1/2 m-auto">
                 <form onSubmit={submit}>
                     <InputSchedule 
                         type="text" 

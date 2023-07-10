@@ -8,7 +8,7 @@ export function Header() {
     const {signOut} = UseAuth()
     const [open, setOpen] = useState(false)
     return(
-        <header className="flex w-full justify-between items-center bg-primary text-white py-4 mx-4 px-6 mt-6 rounded-lg shadow-[0_4px_8px_4px_rgba(0,0,0,0.3)]">
+        <header className="flex w-auto justify-between items-center bg-primary text-white py-4 mx-4 px-6 mt-6 rounded-lg shadow-[0_4px_8px_4px_rgba(0,0,0,0.3)]">
             <div>
                 <Link to={'/dashboard'} className='flex items-center' >
                     <img src={logo} alt="" className='mr-2' />
