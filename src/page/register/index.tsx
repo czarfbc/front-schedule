@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.webp";
+import logo from "../../assets/logo.svg";
 import { Input } from "../../components/input";
 import { Button } from "../../components/button";
 import * as yup from "yup";

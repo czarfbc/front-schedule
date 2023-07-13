@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import logo from "../../assets/logo.webp";
+import logo from "../../assets/logo.svg";
 import { Input } from "../../components/input";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
