@@ -74,7 +74,7 @@ export function Schedules() {
   return (
     <div className="max-w-[1340px] mx-auto xs:px-4 w-full">
       <Header />
-      <h2 className="text-2xl font-light text-primary m-4">
+      <h2 className="text-2xl font-light text-primary 2xs:mx-0 2xs:my-4 xs:m-4">
         Agendamento de Horário
       </h2>
       <div className="sm:w-3/4 lg:w-1/2 m-auto">
@@ -91,7 +91,7 @@ export function Schedules() {
             {...register("phone", { required: true })}
             error={errors.phone && errors.phone.message}
           />
-          <div className="flex justify-between">
+          <div className="flex 2xs:flex-col xs:flex-row justify-between">
             <InputSchedule
               type="date"
               label="Dia"
@@ -102,7 +102,7 @@ export function Schedules() {
               })}
               error={errors.date && errors.date.message}
             />
-            <div className="flex flex-col mb-2 w-[26.2%]">
+            <div className="flex flex-col mb-2 xs:w-[26.2%]">
               <label className="w-full items-center text-primary">Hora</label>
               <input
                 type="time"
@@ -113,7 +113,7 @@ export function Schedules() {
                     handleChangeHour(hour, minutes);
                   },
                 })}
-                className="w-full p-2 rounded-2xl border-[1px] border-primary border-solid bg-white bg-opacity-0 text-base"
+                className="w-full p-2 2xs:rounded-lg xs:rounded-2xl border-[1px] border-primary border-solid bg-white bg-opacity-0 text-base"
               />
               {errors.hour && (
                 <span className="text-[#ff0000] font-bold">
@@ -124,10 +124,10 @@ export function Schedules() {
           </div>
 
           <div className="flex justify-between mt-8">
-            <button className="cursor-pointer no-underline font-light rounded-2xl py-2 px-6 w-1/3 border-solid border-[1px] border-secondary bg-none text-secondary hover:bg-gray-50">
+            <button className="cursor-pointer no-underline font-light 2xs:rounded-xl xs:rounded-2xl py-1 2xs:px-3 xs:px-6 2xs:w-2/5 xs:w-1/3 border-solid border-[1px] border-secondary bg-none text-secondary hover:bg-gray-50">
               <Link to={"/dashboard"}>Cancelar</Link>
             </button>
-            <button className="cursor-pointer no-underline font-light rounded-2xl py-2 px-6 w-1/3 border-solid border-[1px] border-secondary bg-secondary text-white hover:bg-secondary-50">
+            <button className="cursor-pointer no-underline font-light 2xs:rounded-xl xs:rounded-2xl py-2 2xs:px-3 xs:px-6 2xs:w-2/5 xs:w-1/3 border-solid border-[1px] border-secondary bg-secondary text-white hover:bg-secondary-50">
               Agendar
             </button>
           </div>
