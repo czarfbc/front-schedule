@@ -57,12 +57,12 @@ export function Dashboard() {
           dia {format(date, "dd/MM/yyyy")}
         </p>
       </div>
-      <h2 className="text-secondary xs:mx-4 mb-5 md:text-xl lg:text-2xl font-bold">
+      <h2 className="text-secondary xs:mx-4 2xs:mb-2 xs:mb-5 md:text-xl lg:text-2xl font-bold">
         Próximos Horários
       </h2>
       <div className="flex md:justify-evenly 2xs:flex-col xs:flex-col sm:flex-col md:items-center lg:items-start lg:justify-between lg:flex-row">
         <div
-          className={`flex flex-col sm:w-full md:px-4 lg:px-0 md:items-center lg:items-stretch lg:w-1/2 max-h-[60vh] overflow-x-hidden overflow-y-auto scroll-smooth ${style.cardWrapper}`}
+          className={`flex flex-col sm:w-full md:px-4 lg:px-0 md:items-center lg:items-stretch lg:w-1/2 2xs:max-h-[11vh] xs:max-h-[20vh] lg:max-h-[60vh] overflow-x-hidden overflow-y-auto scroll-smooth ${style.cardWrapper}`}
         >
           {schedules.map((schedules, index) => {
             return (

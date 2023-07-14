@@ -49,7 +49,7 @@ export const Card = ({ id, name, date, phone }: ISchedules) => {
   };
   return (
     <>
-      <div className="flex 2xs:mx-0 xs:mx-4 sm:w-auto md:w-full lg:w-auto bg-white xs:rounded-lg justify-between items-center mb-5 shadow-[0px_8px_10px_0px_rgba(0,0,0,0.3)]">
+      <div className="flex 2xs:mx-0 xs:mx-4 sm:w-auto md:w-full lg:w-auto bg-white xs:rounded-lg justify-between items-center 2xs:mb-3 xs:mb-5 shadow-[0px_8px_10px_0px_rgba(0,0,0,0.3)]">
         <div className="flex gap-2 items-center">
           <span
             className={`${
