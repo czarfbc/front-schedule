@@ -40,7 +40,7 @@ export const Card = ({ id, name, date, phone, description }: ISchedules) => {
   };
   const handleDelete = async () => {
     try {
-      const result = await api.delete(`/schedules/${id}`);
+      await api.delete(`/schedules/${id}`);
       toast.success("Deletado com sucesso");
     } catch (error) {
       if (isAxiosError(error)) {
@@ -50,33 +50,47 @@ export const Card = ({ id, name, date, phone, description }: ISchedules) => {
   };
   return (
     <>
-      <div className="flex 2xs:mx-0 xs:mx-4 sm:w-auto md:w-full lg:w-auto bg-white xs:rounded-lg justify-between items-center 2xs:mb-3 xs:mb-5 shadow-[0px_8px_10px_0px_rgba(0,0,0,0.3)]">
-        <div className="flex gap-2 items-center">
-          <span
-            className={`${
-              !isAfterDate && style.oldHour
-            }  2xs:text-xs xs:text-sm lg:text-xl bg-secondary text-white xs:rounded-s-lg 2xs:py-[0.5rem] 2xs:px-[0.5rem] xs:p-[0.8rem] md:mr-4 lg:mr-8`}
-          >
-            {hour}:{minutes}h
-          </span>
-          <p className="text-primary 2xs:text-[0.65rem] xs:text-sm lg:text-xl">
-            {name} - {phoneFormatted}
-          </p>
+      <div className="flex flex-col 2xs:mx-0 xs:mx-4 sm:w-auto md:w-full lg:w-auto xs:rounded-lg justify-between items-center 2xs:mb-3 xs:mb-5 shadow-[0px_8px_10px_0px_rgba(0,0,0,0.3)]">
+        <div className="flex bg-white w-full justify-between items-center xs:rounded-lg">
+          <div className="flex gap-2 items-center">
+            <span
+              className={`${
+                !isAfterDate && style.oldHour
+              }  2xs:text-xs xs:text-sm lg:text-xl bg-secondary text-white xs:rounded-s-lg 2xs:py-[0.5rem] 2xs:px-[0.5rem] xs:p-[0.8rem] md:mr-4 lg:mr-8`}
+            >
+              {hour}:{minutes}h
+            </span>
+            <p className="text-primary 2xs:text-[0.65rem] xs:text-sm lg:text-xl">
+              {name} - {phoneFormatted}
+            </p>
+          </div>
+          <div className="flex mx-2 gap-2">
+            <AiOutlineEdit
+              size={15}
+              color="#5F68B1"
+              onClick={() => isAfterDate && handleChangeModal()}
+              className="cursor-pointer"
+            />
+            <RiDeleteBinLine
+              size={15}
+              color="#EB2E2E"
+              onClick={() => isAfterDate && handleDelete()}
+              className="cursor-pointer"
+            />
+          </div>
         </div>
-        <div className="flex mx-2 gap-2">
-          <AiOutlineEdit
-            size={15}
-            color="#5F68B1"
-            onClick={() => isAfterDate && handleChangeModal()}
-            className="cursor-pointer"
-          />
-          <RiDeleteBinLine
-            size={15}
-            color="#EB2E2E"
-            onClick={() => isAfterDate && handleDelete()}
-            className="cursor-pointer"
-          />
-        </div>
+        {description ? (
+          <details>
+            <summary className="text-secondary-50 2xs:text-sm xs:text-base sm:text-lg">
+              Descrição
+            </summary>
+            <p className="text-primary 2xs:text-[0.65rem] xs:text-xs sm:text-sm xl:text-lg">
+              {description}
+            </p>
+          </details>
+        ) : (
+          <></>
+        )}
       </div>
       <ModalEdit
         isOpen={openModal}
