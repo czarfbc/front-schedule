@@ -23,7 +23,7 @@ export function Schedules() {
     date: yup.string().required("Campo de data obrigatório"),
     name: yup.string().required("Campo de nome obrigatório"),
     phone: yup.string().required("Campo de telefone obrigatório"),
-    hour: yup.string().required("Campo de telefone obrigatório"),
+    hour: yup.string().required("Campo de hora obrigatório"),
     description: yup.string().required("Campo de descrição obrigatório"),
   });
   const {
@@ -45,7 +45,7 @@ export function Schedules() {
     setMinuteSchedule(minutes);
   };
 
-  const submit = handleSubmit(async ({ name, phone, date }) => {
+  const submit = handleSubmit(async ({ name, phone, date, description }) => {
     const formattedHoursDate = formatISO(
       setHours(parseISO(date), parseInt(hourSchedule))
     );
@@ -64,6 +64,7 @@ export function Schedules() {
         name,
         phone,
         date: formattedDate,
+        description,
       });
       toast.success("Agendado com sucesso");
       navigate("/dashboard");

@@ -14,6 +14,7 @@ interface ISchedules {
   name: string;
   phone: string;
   date: Date;
+  description: string;
 }
 export function Dashboard() {
   const [date, setDate] = useState(new Date());
@@ -72,6 +73,7 @@ export function Dashboard() {
                 date={schedules.date}
                 name={schedules.name}
                 phone={schedules.phone}
+                description={schedules.description}
               />
             );
           })}

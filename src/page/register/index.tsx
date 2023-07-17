@@ -8,8 +8,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { BsPersonBadge } from "react-icons/bs";
-// import { api } from '../../server'
-// import { toast } from 'react-toastify'
 import { UseAuth } from "../../hooks/auth";
 
 interface IFormValues {

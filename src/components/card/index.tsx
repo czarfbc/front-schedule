@@ -13,8 +13,9 @@ interface ISchedules {
   name: string;
   phone: string;
   date: Date;
+  description: string;
 }
-export const Card = ({ id, name, date, phone }: ISchedules) => {
+export const Card = ({ id, name, date, phone, description }: ISchedules) => {
   const isAfterDate = isAfter(new Date(date), new Date());
   const [openModal, setOpenModal] = useState<boolean>(false);
 
