@@ -81,7 +81,7 @@ export const Card = ({ id, name, date, phone, description }: ISchedules) => {
         </div>
         {description ? (
           <details>
-            <summary className="text-secondary-50 2xs:text-sm xs:text-base sm:text-lg">
+            <summary className="text-secondary-50 2xs:text-sm xs:text-base sm:text-lg cursor-pointer">
               Descrição
             </summary>
             <p className="text-primary 2xs:text-[0.65rem] xs:text-xs sm:text-sm xl:text-lg">
