@@ -46,6 +46,12 @@ export function Dashboard() {
       .catch((error) => console.log(error));
   }, [date]);
 
+  const footer = date ? (
+    <p>Você selecionou {format(date, "PPP", { locale: ptBR })}.</p>
+  ) : (
+    <p>Please pick a day.</p>
+  );
+
   return (
     <div className="max-w-[1340px] mx-auto w-full">
       <Header />
@@ -53,10 +59,16 @@ export function Dashboard() {
         <h2 className="md:text-xl lg:text-2xl">
           Bem vindo(a), <span className="font-bold">{user.name}</span>
         </h2>
-        <p>
-          Esta é sua lista de horários {isToday(date) && <span>de hoje,</span>}{" "}
-          dia {format(date, "dd/MM/yyyy")}
-        </p>
+        {isToday(date) ? (
+          <p>
+            Esta é sua lista de horários de hoje, dia{" "}
+            {format(date, "dd/MM/yyyy")}
+          </p>
+        ) : (
+          <p>
+            Está é sua lista de horários do dia {format(date, "dd/MM/yyyy")}
+          </p>
+        )}
       </div>
       <h2 className="text-secondary xs:mx-4 2xs:mb-2 xs:mb-5 md:text-xl lg:text-2xl font-bold">
         Próximos Horários
@@ -83,7 +95,7 @@ export function Dashboard() {
             className="bg-primary h-fit 2xs:p-2 xs:p-4 rounded-[10px] text-white shadow-[0_4px_8px_4px_rgba(0,0,0,0.3)]"
             selected={date}
             mode="single"
-            //disabled={isWeekend}
+            footer={footer}
             modifiers={{ available: isWeekDay }}
             onDayClick={handleDataChange}
             locale={ptBR}
