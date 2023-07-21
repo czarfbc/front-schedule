@@ -6,7 +6,7 @@ interface IRefreshConfig extends AxiosRequestConfig {
 }
 
 const api = axios.create({
-  baseURL: process.env.API_URL,
+  baseURL: "http://localhost:3000",
 });
 
 const refreshSubscribers: Array<(token: string) => void> = [];
