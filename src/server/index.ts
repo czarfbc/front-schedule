@@ -6,11 +6,11 @@ interface IRefreshConfig extends AxiosRequestConfig {
 }
 
 const api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://api-schedulesystem.onrender.com",
 });
 
 const refreshSubscribers: Array<(token: string) => void> = [];
-let isRefreshing = false;
+const isRefreshing = false;
 let failedRequest: Array<IRefreshConfig> = [];
 
 api.interceptors.request.use((config) => {
@@ -38,7 +38,7 @@ api.interceptors.response.use(
           const { token, refresh_token } = response.data;
           localStorage.setItem("token:semana-heroi", token);
           localStorage.setItem("refresh_token:semana-heroi", refresh_token);
-          isRefreshing = false;
+          isRefreshing;
           onRefreshed(token);
 
           if (originalRequest?.headers) {
