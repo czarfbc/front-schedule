@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { ptBR } from "date-fns/locale";
 import { format, isToday } from "date-fns";
 import { api } from "../../server";
+import { Watch } from "react-loader-spinner";
 
 interface ISchedules {
   id: string;
@@ -20,6 +21,7 @@ export function Dashboard() {
   const [date, setDate] = useState(new Date());
   const [schedules, setSchedules] = useState<Array<ISchedules>>([]);
   const { user } = UseAuth();
+  const [removeLoading, setRemoveLoading] = useState(false);
 
   const limitBackDate = new Date();
   limitBackDate.setMonth(limitBackDate.getMonth() - 3);
@@ -34,6 +36,7 @@ export function Dashboard() {
   };
 
   useEffect(() => {
+    setRemoveLoading(false);
     api
       .get("/schedules", {
         params: {
@@ -42,6 +45,7 @@ export function Dashboard() {
       })
       .then((response) => {
         setSchedules(response.data);
+        setRemoveLoading(true);
       })
       .catch((error) => console.log(error));
   }, [date]);
@@ -77,6 +81,19 @@ export function Dashboard() {
         <div
           className={`flex flex-col sm:w-full md:px-4 lg:px-0 md:items-center lg:items-stretch lg:w-1/2 2xs:max-h-[11vh] xs:max-h-[20vh] lg:max-h-[60vh] overflow-x-hidden overflow-y-auto scroll-smooth ${style.cardWrapper}`}
         >
+          {!removeLoading && (
+            <div className="flex w-full h-full items-center justify-center">
+              <Watch
+                height="80"
+                width="80"
+                radius="48"
+                color="#4fa94d"
+                ariaLabel="watch-loading"
+                wrapperStyle={{}}
+                visible={true}
+              />
+            </div>
+          )}
           {schedules.map((schedules, index) => {
             return (
               <Card
