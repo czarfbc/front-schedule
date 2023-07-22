@@ -8,6 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { BsPersonBadge } from "react-icons/bs";
+import { BiShow } from "react-icons/bi";
 import { UseAuth } from "../../hooks/auth";
 
 interface IFormValues {
@@ -76,6 +77,7 @@ export function Register() {
                 {...register("password", { required: true })}
                 error={errors.password && errors.password.message}
                 icon={<RiLockPasswordLine size={18} />}
+                showIcon={<BiShow size={18} />}
               />
               <Button text="Cadastrar" />
             </form>

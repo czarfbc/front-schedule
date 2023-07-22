@@ -6,7 +6,7 @@ interface IRefreshConfig extends AxiosRequestConfig {
 }
 
 const api = axios.create({
-  baseURL: "https://api-schedulesystem.onrender.com",
+  baseURL: "http://localhost:3000",
 });
 
 const refreshSubscribers: Array<(token: string) => void> = [];

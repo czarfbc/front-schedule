@@ -7,6 +7,7 @@ import { Button } from "../../components/button";
 import { Link } from "react-router-dom";
 import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
+import { BiShow } from "react-icons/bi";
 import { UseAuth } from "../../hooks/auth";
 
 interface IFormValues {
@@ -35,6 +36,7 @@ export function Login() {
       console.log("🚀 ~ file: index.tsx:29 ~ submit ~ error:", error);
     }
   });
+
   return (
     <div className="h-screen bg-[#0093E9] bg-gradient-to-br from-[#0093E9] to-[#80D0C7]">
       <div className="w-full px-4 mx-auto max-w-[1340px] justify-end flex">
@@ -60,6 +62,7 @@ export function Login() {
                 {...register("password", { required: true })}
                 error={errors.password && errors.password.message}
                 icon={<RiLockPasswordLine size={18} />}
+                showIcon={<BiShow size={18} />}
               />
               <Button text="Entrar" />
             </form>
