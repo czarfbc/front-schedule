@@ -80,6 +80,39 @@ export function ModalEdit({
               {hour}:{minutes}h {name}
             </p>
 
+            {/* <div className="text-primary flex 2xs:flex-col xs:flex-row justify-between mb-6 items-center">
+              <label>Indique um novo nome</label>
+              <input
+                type="text"
+                defaultValue={defaultValueInputDate}
+                onChange={(e) => handleSetDate(e.target.value)}
+                min={currentValue}
+                className="border-solid border-[1px] border-primary rounded-[10px] 2xs:w-3/5 xs:w-2/5 p-1 text-primary cursor-text"
+              />
+            </div>
+
+            <div className="text-primary flex 2xs:flex-col xs:flex-row justify-between mb-6 items-center">
+              <label>Indique um novo número</label>
+              <input
+                type="number"
+                defaultValue={defaultValueInputDate}
+                onChange={(e) => handleSetDate(e.target.value)}
+                min={currentValue}
+                className="border-solid border-[1px] border-primary rounded-[10px] 2xs:w-3/5 xs:w-2/5 p-1 text-primary cursor-text"
+              />
+            </div>
+
+            <div className="text-primary flex 2xs:flex-col xs:flex-row justify-between mb-6 items-center">
+              <label>Indique uma nova descrição</label>
+              <input
+                type="text"
+                defaultValue={defaultValueInputDate}
+                onChange={(e) => handleSetDate(e.target.value)}
+                min={currentValue}
+                className="border-solid border-[1px] border-primary rounded-[10px] 2xs:w-3/5 xs:w-2/5 p-1 text-primary cursor-text"
+              />
+            </div> */}
+
             <div className="text-primary flex 2xs:flex-col xs:flex-row justify-between mb-6 items-center">
               <label>Indique uma nova data</label>
               <input

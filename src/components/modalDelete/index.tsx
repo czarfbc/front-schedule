@@ -7,11 +7,17 @@ interface IModalDelete {
   handleChangeModalDelete: () => void;
   id: string;
   isOpen: boolean;
+  name: string;
+  hour: string;
+  minutes: string;
 }
 export function ModalDelete({
   handleChangeModalDelete,
   id,
   isOpen,
+  hour,
+  minutes,
+  name,
 }: IModalDelete) {
   const handleDelete = async () => {
     try {
@@ -40,8 +46,11 @@ export function ModalDelete({
           </div>
           <div className="py-4 2xs:px-2 xs:px-8">
             <p className="text-secondary 2xs:text-xl xs:text-2xl mb-3">
-              Tem certeza que deseja excluir este horário?
+              {hour}:{minutes}h {name}
             </p>
+            <div className="text-primary flex 2xs:flex-col xs:flex-row justify-between mb-6 items-center">
+              <label>Tem certeza que deseja excluir este horário?</label>
+            </div>
           </div>
           <div className="flex justify-between pt-0 2xs:px-2 xs:px-8 pb-8">
             <button

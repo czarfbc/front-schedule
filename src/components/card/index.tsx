@@ -96,6 +96,9 @@ export const Card = ({ id, name, date, phone, description }: ISchedules) => {
         isOpen={openModalDelete}
         handleChangeModalDelete={handleChangeModalDelete}
         id={id}
+        hour={String(hour)}
+        minutes={String(minutes)}
+        name={name}
       />
     </>
   );
