@@ -14,7 +14,7 @@ import * as yup from "yup";
 interface IFormValues {
   date: string;
   name: string;
-  phone: string;
+  phone?: string;
   hour: string;
   description?: string;
 }
@@ -22,7 +22,6 @@ export function Schedules() {
   const schema = yup.object().shape({
     date: yup.string().required("Campo de data obrigatório"),
     name: yup.string().required("Campo de nome obrigatório"),
-    phone: yup.string().required("Campo de telefone obrigatório"),
     hour: yup.string().required("Campo de hora obrigatório"),
   });
   const {
@@ -89,7 +88,7 @@ export function Schedules() {
           />
           <InputSchedule
             type="number"
-            label="Celular do Cliente"
+            label="Celular do Cliente (opcional)"
             {...register("phone", { required: true })}
             error={errors.phone && errors.phone.message}
           />
