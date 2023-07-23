@@ -1,13 +1,6 @@
 import { AiOutlineClose } from "react-icons/ai";
 import { UseAuth } from "../../hooks/auth";
-import {
-  formatISO,
-  // getHours,
-  // getMinutes,
-  parseISO,
-  setHours,
-  setMinutes,
-} from "date-fns";
+import { formatISO, parseISO, setHours, setMinutes } from "date-fns";
 import { useState } from "react";
 import { api } from "../../server";
 import { toast } from "react-toastify";
@@ -29,19 +22,12 @@ export function ModalEdit({
   id,
   minutes,
 }: IModal) {
-  const { /*availableSchedules, schedules,*/ date, handleSetDate } = UseAuth();
+  const { date, handleSetDate } = UseAuth();
   const [hourSchedule, setHourSchedule] = useState("");
   const [minuteSchedule, setMinuteSchedule] = useState("");
 
   const currentValue = new Date().toISOString().split("T")[0];
   const defaultValueInputDate = "";
-
-  // const isSchedulesAvailable = !schedules.find((schedulesItem) => {
-  //   const scheduleDate = new Date(schedulesItem.date);
-  //   const scheduleHour = getHours(scheduleDate);
-  //   const scheduleMinutes = getMinutes(scheduleDate);
-  //   return scheduleHour === Number(hour) && scheduleMinutes;
-  // });
 
   const handleChangeHour = (hour: string, minutes: string) => {
     setHourSchedule(hour);

@@ -12,7 +12,6 @@ interface IAuthContextData {
   signOut: () => void;
   createUser: ({ name, email, password }: ICreateUser) => void;
   user: IUserData;
-  availableSchedules: Array<string>;
   schedules: Array<ISchedules>;
   date: string;
   handleSetDate: (date: string) => void;
@@ -45,19 +44,7 @@ export const AuthContext = createContext({} as IAuthContextData);
 export function AuthProvider({ children }: IAuthProvider) {
   const [schedules, setSchedules] = useState<Array<ISchedules>>([]);
   const [date, setDate] = useState("");
-  const availableSchedules = [
-    "09",
-    "10",
-    "11",
-    "12",
-    "13",
-    "14",
-    "15",
-    "16",
-    "17",
-    "18",
-    "19",
-  ];
+
   const [user, setUser] = useState(() => {
     const user = localStorage.getItem("user:semana-heroi");
     if (user) {
@@ -147,7 +134,6 @@ export function AuthProvider({ children }: IAuthProvider) {
         signIn,
         signOut,
         user,
-        availableSchedules,
         schedules,
         date,
         handleSetDate,

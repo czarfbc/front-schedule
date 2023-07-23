@@ -4,9 +4,7 @@ import { isAfter } from "date-fns";
 import style from "./card.module.css";
 import { useState } from "react";
 import { ModalEdit } from "../modalEdit";
-import { isAxiosError } from "axios";
-import { toast } from "react-toastify";
-import { api } from "../../server";
+import { ModalDelete } from "../modalDelete";
 
 interface ISchedules {
   id: string;
@@ -18,6 +16,7 @@ interface ISchedules {
 export const Card = ({ id, name, date, phone, description }: ISchedules) => {
   const isAfterDate = isAfter(new Date(date), new Date());
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const [openModalDelete, setOpenModalDelete] = useState<boolean>(false);
 
   const dateFormatted = new Date(date);
   const hourMinutesFormatted = dateFormatted;
@@ -38,15 +37,8 @@ export const Card = ({ id, name, date, phone, description }: ISchedules) => {
   const handleChangeModal = () => {
     setOpenModal(!openModal);
   };
-  const handleDelete = async () => {
-    try {
-      await api.delete(`/schedules/${id}`);
-      toast.success("Deletado com sucesso");
-    } catch (error) {
-      if (isAxiosError(error)) {
-        toast.error(error.response?.data.message);
-      }
-    }
+  const handleChangeModalDelete = () => {
+    setOpenModalDelete(!openModalDelete);
   };
   return (
     <>
@@ -74,7 +66,7 @@ export const Card = ({ id, name, date, phone, description }: ISchedules) => {
             <RiDeleteBinLine
               size={15}
               color="#EB2E2E"
-              onClick={() => isAfterDate && handleDelete()}
+              onClick={() => isAfterDate && handleChangeModalDelete()}
               className="cursor-pointer"
             />
           </div>
@@ -98,6 +90,11 @@ export const Card = ({ id, name, date, phone, description }: ISchedules) => {
         hour={String(hour)}
         minutes={String(minutes)}
         name={name}
+        id={id}
+      />
+      <ModalDelete
+        isOpen={openModalDelete}
+        handleChangeModalDelete={handleChangeModalDelete}
         id={id}
       />
     </>
