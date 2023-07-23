@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo_small.svg";
 import { BsGearFill } from "react-icons/bs";
+import { CgCloseO } from "react-icons/cg";
 import { useState } from "react";
 import { UseAuth } from "../../hooks/auth";
 
@@ -19,7 +20,7 @@ export function Header() {
           onClick={() => setOpen(!open)}
           className="relative flex items-center"
         >
-          <BsGearFill size={23} />
+          {open ? <CgCloseO size={23} /> : <BsGearFill size={23} />}
           {open && (
             <ul className="absolute top-[100%] right-[-1.5rem] p-0 list-none rounded-lg opacity-1 transition-all bg-primary drop-shadow-[0px_9px_4px_rgba(0,0,0,0.25)]">
               <Link to={"/dashboard"}>
