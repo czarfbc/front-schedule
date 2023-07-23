@@ -22,7 +22,14 @@ export function ModalEdit({
   id,
   minutes,
 }: IModal) {
-  const { date, handleSetDate } = UseAuth();
+  const {
+    date,
+    handleSetDate,
+    phone,
+    handleSetPhone,
+    description,
+    handleSetDescription,
+  } = UseAuth();
   const [hourSchedule, setHourSchedule] = useState("");
   const [minuteSchedule, setMinuteSchedule] = useState("");
 
@@ -51,6 +58,8 @@ export function ModalEdit({
     try {
       await api.put(`/schedules/${id}`, {
         date: formattedDate,
+        phone,
+        description,
       });
       toast.success("Atualizado com sucesso");
       handleChangeModal();
@@ -80,12 +89,12 @@ export function ModalEdit({
               {hour}:{minutes}h {name}
             </p>
 
-            {/* <div className="text-primary flex 2xs:flex-col xs:flex-row justify-between mb-6 items-center">
+            <div className="text-primary flex 2xs:flex-col xs:flex-row justify-between mb-6 items-center">
               <label>Indique uma nova descrição</label>
               <input
                 type="text"
                 defaultValue={defaultValueInputDate}
-                onChange={(e) => handleSetDate(e.target.value)}
+                onChange={(e) => handleSetDescription(e.target.value)}
                 min={currentValue}
                 className="border-solid border-[1px] border-primary rounded-[10px] 2xs:w-3/5 xs:w-2/5 p-1 text-primary cursor-text"
               />
@@ -95,11 +104,11 @@ export function ModalEdit({
               <input
                 type="number"
                 defaultValue={defaultValueInputDate}
-                onChange={(e) => handleSetDate(e.target.value)}
+                onChange={(e) => handleSetPhone(e.target.value)}
                 min={currentValue}
                 className="border-solid border-[1px] border-primary rounded-[10px] 2xs:w-3/5 xs:w-2/5 p-1 text-primary cursor-text"
               />
-            </div> */}
+            </div>
 
             <div className="text-primary flex 2xs:flex-col xs:flex-row justify-between mb-6 items-center">
               <label>Indique uma nova data</label>

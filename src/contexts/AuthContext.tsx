@@ -16,6 +16,10 @@ interface IAuthContextData {
   date: string;
   handleSetDate: (date: string) => void;
   isAutheticated: boolean;
+  handleSetPhone: (phone: string) => void;
+  phone: string;
+  description: string;
+  handleSetDescription: (description: string) => void;
 }
 interface ISchedules {
   id: string;
@@ -45,6 +49,9 @@ export function AuthProvider({ children }: IAuthProvider) {
   const [schedules, setSchedules] = useState<Array<ISchedules>>([]);
   const [date, setDate] = useState("");
 
+  const [description, setDescription] = useState("");
+  const [phone, setPhone] = useState("");
+
   const [user, setUser] = useState(() => {
     const user = localStorage.getItem("user:semana-heroi");
     if (user) {
@@ -58,19 +65,27 @@ export function AuthProvider({ children }: IAuthProvider) {
   const handleSetDate = (date: string) => {
     setDate(date);
   };
+  const handleSetPhone = (phone: string) => {
+    setPhone(phone);
+  };
+  const handleSetDescription = (description: string) => {
+    setDescription(description);
+  };
 
   useEffect(() => {
     api
       .get("/schedules", {
         params: {
           date,
+          phone,
+          description,
         },
       })
       .then((response) => {
         setSchedules(response.data);
       })
       .catch((error) => console.log(error));
-  }, [date]);
+  }, [date, phone, description]);
 
   async function createUser({ name, email, password }: ICreateUser) {
     try {
@@ -139,6 +154,10 @@ export function AuthProvider({ children }: IAuthProvider) {
         handleSetDate,
         createUser,
         isAutheticated,
+        handleSetPhone,
+        phone,
+        description,
+        handleSetDescription,
       }}
     >
       {children}
