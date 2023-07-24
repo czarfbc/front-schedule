@@ -50,14 +50,17 @@ export function ModalEdit({
     );
 
     const datePart1 = formattedHoursDate.slice(0, 13);
-    const timePart2 = formattedMinutesDate.slice(13, 25);
+    const timePart2 = formattedMinutesDate.slice(13, 26);
+    console.log(
+      "🚀 ~ file: index.tsx:55 ~ updateData ~ formattedMinutesDate:",
+      formattedMinutesDate
+    );
 
     const concatenatedDate = `${datePart1}${timePart2}`;
-    const formattedDate = concatenatedDate;
 
     try {
       await api.put(`/schedules/${id}`, {
-        date: formattedDate,
+        date: concatenatedDate,
         phone,
         description,
       });
