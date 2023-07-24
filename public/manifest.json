@@ -2,7 +2,7 @@
   "background_color": "#348789",
   "description": "Sistema de agendamento eletrônico.",
   "dir": "ltr",
-  "display": "standalone",
+  "display": "fullscreen",
   "name": "ScheduleSystem",
   "orientation": "any",
   "scope": "/",
