@@ -38,6 +38,12 @@
       "size": "512x512"
     }
   ],
-  "shortcuts": [],
+  "shortcuts": [
+    {
+      "name": "login",
+      "url": "schedule-system-psi.vercel.app/",
+      "description": "login page"
+    }
+  ],
   "lang": "pt"
 }
