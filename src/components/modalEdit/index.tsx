@@ -50,9 +50,10 @@ export function ModalEdit({
     );
 
     const datePart1 = formattedHoursDate.slice(0, 13);
-    const timePart2 = formattedMinutesDate.slice(13, 26);
+    const timePart2 = formattedMinutesDate.slice(13, 19);
+    const gmt0 = "-00:00";
 
-    const concatenatedDate = `${datePart1}${timePart2}`;
+    const concatenatedDate = `${datePart1}${timePart2}${gmt0}`;
 
     try {
       await api.put(`/schedules/${id}`, {
