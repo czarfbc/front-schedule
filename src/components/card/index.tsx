@@ -19,14 +19,11 @@ export const Card = ({ id, name, date, phone, description }: ISchedules) => {
   const [openModalDelete, setOpenModalDelete] = useState<boolean>(false);
 
   const dateFormatted = new Date(date);
-  const hourMinutesFormatted = dateFormatted;
-  const hourMinutesValues = hourMinutesFormatted.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
+  const gmtFormatted = dateFormatted.toLocaleString("pt-BR", {
+    timeZone: "UTC",
   });
-
-  const hour = hourMinutesValues.split(":")[0];
-  const minutes = hourMinutesValues.split(":")[1];
+  const partesDataFormatada = gmtFormatted.split(" ")[1];
+  const [hour, minutes] = partesDataFormatada.split(":");
 
   let phoneFormatted = phone.replace(/\D/g, "");
   phoneFormatted = phoneFormatted.replace(
