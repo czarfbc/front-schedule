@@ -28,12 +28,12 @@
   ],
   "icons": [
     {
-      "src": "/img/pwa-icon-192x192.png",
+      "src": "https://logoschedule.s3.sa-east-1.amazonaws.com/pwa-icon-192x192.png",
       "type": "image/png",
       "size": "192x192"
     },
     {
-      "src": "/img/pwa-icon-512x512.png",
+      "src": "https://logoschedule.s3.sa-east-1.amazonaws.com/pwa-icon-512x512.png",
       "type": "image/png",
       "size": "512x512"
     }
@@ -41,7 +41,7 @@
   "shortcuts": [
     {
       "name": "login",
-      "url": "schedule-system-psi.vercel.app/",
+      "url": "apischedule.com.br",
       "description": "login page"
     }
   ],
