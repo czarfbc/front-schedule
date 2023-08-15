@@ -9,7 +9,8 @@ import { ptBR } from "date-fns/locale";
 import { format, isToday } from "date-fns";
 import { api } from "../../server";
 import { Watch } from "react-loader-spinner";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineCloseCircle } from "react-icons/ai";
+import { BiCircle } from "react-icons/bi";
 
 interface ISchedules {
   id: string;
@@ -118,32 +119,42 @@ export function Dashboard() {
             );
           })}
         </div>
-        <div className="flex flex-col mt-4 md:w-1/3 lg:w-1/2 p-4 items-center shadow-[0_4px_8px_4px_rgba(0,0,0,0.3)] rounded-[10px] bg-primary ">
-          <AiOutlineClose
-            size={20}
-            className="cursor-pointer text-white"
-            onClick={handleHideDayPicker}
-          />
-          {hideDayPicker && (
-            <DayPicker
-              className="bg-primary m-0 h-fit  rounded-b-[10px] text-white "
-              selected={date}
-              mode="single"
-              footer={footer}
-              modifiers={{ available: isWeekDay }}
-              onDayClick={handleDataChange}
-              locale={ptBR}
-              fromDate={limitBackDate}
-              classNames={{
-                day: `${style.day} bg-white 2xs:w-8 2xs:h-8 xs:w-10 xs:h-10 text-black 2xs:m-[0.1rem] xs:m-[0.15rem] rounded-md`,
-                nav_button_previous: style.nav_button_previous,
-                nav_button_next: style.nav_button_next,
-              }}
-              modifiersClassNames={{
-                selected: style.selected,
-              }}
-            />
-          )}
+        <div className="flex mt-4 md:w-1/3 lg:w-1/2 p-4 justify-center ">
+          <div className="bg-primary py-2  rounded-[10px] w-[346px] flex flex-col items-center shadow-[0_4px_8px_4px_rgba(0,0,0,0.3)] ">
+            {hideDayPicker ? (
+              <>
+                <AiOutlineCloseCircle
+                  size={25}
+                  className="cursor-pointer text-white"
+                  onClick={handleHideDayPicker}
+                />
+                <DayPicker
+                  className="bg-primary m-0 pb-2 2xs:px-2 xs:px-4 h-fit rounded-b-[10px] text-white "
+                  selected={date}
+                  mode="single"
+                  footer={footer}
+                  modifiers={{ available: isWeekDay }}
+                  onDayClick={handleDataChange}
+                  locale={ptBR}
+                  fromDate={limitBackDate}
+                  classNames={{
+                    day: `${style.day} bg-white 2xs:w-[33px] 2xs:h-[33px] 1.5xs:w-10 1.5xs:h-10 text-black 2xs:m-[0.1rem] xs:m-[0.15rem] rounded-md`,
+                    nav_button_previous: style.nav_button_previous,
+                    nav_button_next: style.nav_button_next,
+                  }}
+                  modifiersClassNames={{
+                    selected: style.selected,
+                  }}
+                />
+              </>
+            ) : (
+              <BiCircle
+                size={25}
+                className="cursor-pointer text-white"
+                onClick={handleHideDayPicker}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>

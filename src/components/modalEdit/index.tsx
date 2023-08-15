@@ -1,4 +1,4 @@
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 import { UseAuth } from "../../hooks/auth";
 import { formatISO, parseISO, setHours, setMinutes } from "date-fns";
 import { useState } from "react";
@@ -78,7 +78,7 @@ export function ModalEdit({
             <h2 className="2xs:text-lg xs:text-2xl font-bold">
               Editar Horário
             </h2>
-            <AiOutlineClose
+            <AiOutlineCloseCircle
               size={25}
               className="cursor-pointer"
               onClick={handleChangeModal}

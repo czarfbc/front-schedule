@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import { api } from "../../server";
 import { isAxiosError } from "axios";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
 interface IModalDelete {
   handleChangeModalDelete: () => void;
@@ -38,7 +38,7 @@ export function ModalDelete({
             <h2 className="2xs:text-lg xs:text-2xl font-bold">
               Excluir Horário
             </h2>
-            <AiOutlineClose
+            <AiOutlineCloseCircle
               size={25}
               className="cursor-pointer"
               onClick={handleChangeModalDelete}
