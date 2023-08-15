@@ -9,6 +9,7 @@ import { ptBR } from "date-fns/locale";
 import { format, isToday } from "date-fns";
 import { api } from "../../server";
 import { Watch } from "react-loader-spinner";
+import { AiOutlineClose } from "react-icons/ai";
 
 interface ISchedules {
   id: string;
@@ -22,6 +23,12 @@ export function Dashboard() {
   const [schedules, setSchedules] = useState<Array<ISchedules>>([]);
   const { user } = UseAuth();
   const [removeLoading, setRemoveLoading] = useState(false);
+
+  const [hideDayPicker, setHideDayPicker] = useState(true);
+  const handleHideDayPicker = () => {
+    setHideDayPicker(!hideDayPicker);
+    console.log(hideDayPicker);
+  };
 
   const limitBackDate = new Date();
   limitBackDate.setMonth(limitBackDate.getMonth() - 3);
@@ -79,7 +86,11 @@ export function Dashboard() {
       </h2>
       <div className="flex md:justify-evenly 2xs:flex-col xs:flex-col sm:flex-col md:items-center lg:items-start lg:justify-between lg:flex-row">
         <div
-          className={`flex flex-col sm:w-full md:px-4 lg:px-0 md:items-center lg:items-stretch lg:w-1/2 2xs:max-h-[11vh] xs:max-h-[20vh] lg:max-h-[60vh] overflow-x-hidden overflow-y-auto scroll-smooth ${style.cardWrapper}`}
+          className={`flex flex-col sm:w-full md:px-4 lg:px-0 md:items-center lg:items-stretch lg:w-1/2 ${
+            !hideDayPicker && style.hmax
+          } 2xs:max-h-[11vh] xs:max-h-[20vh] lg:max-h-[60vh] overflow-x-hidden overflow-y-auto scroll-smooth ${
+            style.cardWrapper
+          }`}
         >
           {!removeLoading && (
             <div className="flex w-full h-full items-center justify-center">
@@ -107,25 +118,32 @@ export function Dashboard() {
             );
           })}
         </div>
-        <div className="flex md:w-1/3 lg:w-1/2 justify-center">
-          <DayPicker
-            className="bg-primary h-fit 2xs:p-2 xs:p-4 rounded-[10px] text-white shadow-[0_4px_8px_4px_rgba(0,0,0,0.3)]"
-            selected={date}
-            mode="single"
-            footer={footer}
-            modifiers={{ available: isWeekDay }}
-            onDayClick={handleDataChange}
-            locale={ptBR}
-            fromDate={limitBackDate}
-            classNames={{
-              day: `${style.day} bg-white 2xs:w-8 2xs:h-8 xs:w-10 xs:h-10 text-black 2xs:m-[0.1rem] xs:m-[0.15rem] rounded-md`,
-              nav_button_previous: style.nav_button_previous,
-              nav_button_next: style.nav_button_next,
-            }}
-            modifiersClassNames={{
-              selected: style.selected,
-            }}
+        <div className="flex flex-col mt-4 md:w-1/3 lg:w-1/2 p-4 items-center shadow-[0_4px_8px_4px_rgba(0,0,0,0.3)] rounded-[10px] bg-primary ">
+          <AiOutlineClose
+            size={20}
+            className="cursor-pointer text-white"
+            onClick={handleHideDayPicker}
           />
+          {hideDayPicker && (
+            <DayPicker
+              className="bg-primary m-0 h-fit  rounded-b-[10px] text-white "
+              selected={date}
+              mode="single"
+              footer={footer}
+              modifiers={{ available: isWeekDay }}
+              onDayClick={handleDataChange}
+              locale={ptBR}
+              fromDate={limitBackDate}
+              classNames={{
+                day: `${style.day} bg-white 2xs:w-8 2xs:h-8 xs:w-10 xs:h-10 text-black 2xs:m-[0.1rem] xs:m-[0.15rem] rounded-md`,
+                nav_button_previous: style.nav_button_previous,
+                nav_button_next: style.nav_button_next,
+              }}
+              modifiersClassNames={{
+                selected: style.selected,
+              }}
+            />
+          )}
         </div>
       </div>
     </div>

@@ -10,18 +10,22 @@
   background-color: var(--primary);
   border-radius: 8px;
 }
-.selected{
+.selected {
   background-color: var(--secondary) !important;
   color: var(--white) !important;
 }
 .nav_button_previous:hover,
-.nav_button_next:hover{
+.nav_button_next:hover {
   background-color: var(--secondary) !important;
 }
-.day_disabled{
+.day_disabled {
   background-color: var(--secondary) !important;
 }
-.day:hover{
+.day:hover {
   background-color: var(--secondary-20) !important;
   color: var(--white) !important;
+}
+
+.hmax {
+  max-height: 50vh !important;
 }
