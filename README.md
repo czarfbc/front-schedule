@@ -1,4 +1,4 @@
-# front-hero-code
+# front-schedule
 yarn install
 #
 yarn dev
