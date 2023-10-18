@@ -53,7 +53,7 @@ export function AuthProvider({ children }: IAuthProvider) {
   const [phone, setPhone] = useState("");
 
   const [user, setUser] = useState(() => {
-    const user = localStorage.getItem("user:semana-heroi");
+    const user = localStorage.getItem("user");
     if (user) {
       return JSON.parse(user);
     }
@@ -120,9 +120,9 @@ export function AuthProvider({ children }: IAuthProvider) {
         email: user.email,
         avatar_url: user.avatar_url,
       };
-      localStorage.setItem("token:semana-heroi", token);
-      localStorage.setItem("refresh_token:semana-heroi", refresh_token);
-      localStorage.setItem("user:semana-heroi", JSON.stringify(userData));
+      localStorage.setItem("token", token);
+      localStorage.setItem("refresh_token", refresh_token);
+      localStorage.setItem("user", JSON.stringify(userData));
 
       navigate("/dashboard");
       toast.success(`Seja bem vindo(a), ${userData.name}`);
@@ -138,9 +138,9 @@ export function AuthProvider({ children }: IAuthProvider) {
     }
   }
   function signOut() {
-    localStorage.removeItem("token:semana-heroi");
-    localStorage.removeItem("refresh_token:semana-heroi");
-    localStorage.removeItem("user:semana-heroi");
+    localStorage.removeItem("token");
+    localStorage.removeItem("refresh_token");
+    localStorage.removeItem("user");
     navigate("/");
   }
   return (
