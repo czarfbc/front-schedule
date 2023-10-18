@@ -14,10 +14,11 @@
     "axios": "^1.4.0",
     "date-fns": "^2.30.0",
     "esbuild": "^0.19.2",
+    "js-cookie": "^3.0.5",
     "react": "^18.2.0",
     "react-day-picker": "^8.8.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.44.3",
+    "react-hook-form": "^7.47.0",
     "react-icons": "^4.10.1",
     "react-loader-spinner": "^5.3.4",
     "react-router-dom": "^6.12.1",
@@ -25,6 +26,7 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.5",
     "@types/node": "^20.5.0",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",

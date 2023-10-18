@@ -14,7 +14,7 @@ const isRefreshing = false;
 let failedRequest: Array<IRefreshConfig> = [];
 
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem(`token:semana-heroi`);
+  const token = localStorage.getItem(`token`);
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -36,8 +36,8 @@ api.interceptors.response.use(
             refresh_token: refresh,
           });
           const { token, refresh_token } = response.data;
-          localStorage.setItem("token:semana-heroi", token);
-          localStorage.setItem("refresh_token:semana-heroi", refresh_token);
+          localStorage.setItem("token", token);
+          localStorage.setItem("refresh_token", refresh_token);
           isRefreshing;
           onRefreshed(token);
 
@@ -62,9 +62,9 @@ api.interceptors.response.use(
         });
       }
     } else {
-      // localStorage.removeItem('token:semana-heroi')
-      // localStorage.removeItem('refresh_token:semana-heroi')
-      // localStorage.removeItem('user:semana-heroi')
+      localStorage.removeItem("token");
+      localStorage.removeItem("refresh_token");
+      localStorage.removeItem("user");
     }
 
     return Promise.reject(error);
