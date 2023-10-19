@@ -18,16 +18,22 @@ interface IFormValues {
 }
 export function Register() {
   const { createUser } = UseAuth();
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const senhaRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+]).+$/;
 
   const schema = yup.object().shape({
     name: yup.string().required("Campo de nome obrigatório"),
     email: yup
       .string()
-      .email("Digite um email válido")
+      .matches(emailRegex, "Digite um email válido")
       .required("Campo de email obrigatório"),
     password: yup
       .string()
-      .min(6, "Mínimo de 6 caracteres")
+      .matches(
+        senhaRegex,
+        "Mínimo de 8 caracteres, uma letra maiúscula, e um caractere especial"
+      )
+      .min(8, "Mínimo de 8 caracteres")
       .required("Campo de senha obrigatório"),
   });
   const {
@@ -39,7 +45,7 @@ export function Register() {
     try {
       createUser({ name, email, password });
     } catch (error) {
-      console.log("🚀 ~ file: index.tsx:33 ~ submit ~ error:", error);
+      console.log("🚀 ~ file: index.tsx:42 ~ submit ~ error:", error);
     }
   });
   return (

@@ -40,14 +40,15 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, IInput> = (
           {...rest}
           className="w-full 2xs:py-1 xs:py-2 2xs:px-7 md:py-[0.7rem] md:px-[2.2rem] rounded-lg border-[1px] border-gray-50 border-solid bg-white sm:text-sm md:text-base"
         />
+        <i
+          aria-hidden="true"
+          className="absolute pr-2 right-0 flex items-center cursor-pointer"
+          onClick={togglePasswordVisibility}
+        >
+          {showPasswordToggleIcon ? <BiHide size={18} /> : showIcon}
+        </i>
       </label>
-      <i
-        aria-hidden="true"
-        className="absolute pr-2 right-0 flex items-center cursor-pointer"
-        onClick={togglePasswordVisibility}
-      >
-        {showPasswordToggleIcon ? <BiHide size={18} /> : showIcon}
-      </i>
+
       {error && <span className="text-[#ff0000] font-bold">{error}</span>}
     </div>
   );
