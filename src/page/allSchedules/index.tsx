@@ -49,7 +49,7 @@ export function GetAll() {
 
       <div className="flex md:justify-evenly 2xs:flex-col xs:flex-col sm:flex-col md:items-center lg:items-start lg:justify-between lg:flex-row">
         <div
-          className={`flex flex-col sm:w-full md:px-4 lg:px-0 md:items-center lg:items-stretch lg:w-full} max-h-[50vh] overflow-x-hidden overflow-y-auto scroll-smooth ${style.cardWrapper}`}
+          className={`flex flex-col sm:w-full md:px-4 lg:px-0 md:items-center lg:items-stretch lg:w-full} max-h-[60vh] overflow-x-hidden overflow-y-auto scroll-smooth ${style.cardWrapper}`}
         >
           {!removeLoading && (
             <div className="flex w-full h-full items-center justify-center">
