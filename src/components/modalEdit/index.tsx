@@ -56,7 +56,7 @@ export function ModalEdit({
     const concatenatedDate = `${datePart1}${timePart2}${gmt0}`;
 
     try {
-      await api.put(`/schedules/${id}`, {
+      await api.patch(`/schedules/${id}`, {
         date: concatenatedDate,
         phone,
         description,

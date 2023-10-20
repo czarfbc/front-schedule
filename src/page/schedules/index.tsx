@@ -52,16 +52,16 @@ export function Schedules() {
     );
 
     const datePart1 = formattedHoursDate.slice(0, 13);
-    const timePart2 = formattedMinutesDate.slice(13, 25);
+    const timePart2 = formattedMinutesDate.slice(13, 19);
 
-    const concatenatedDate = `${datePart1}${timePart2}`;
-    const formattedDate = concatenatedDate;
+    const gmt0 = "-00:00";
+    const concatenatedDate = `${datePart1}${timePart2}${gmt0}`;
 
     try {
       await api.post(`/schedules/`, {
         name,
         phone,
-        date: formattedDate,
+        date: concatenatedDate,
         description,
       });
       toast.success("Agendado com sucesso");

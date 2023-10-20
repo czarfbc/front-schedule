@@ -4,10 +4,8 @@ import { Header } from "../../components/header";
 import { UseAuth } from "../../hooks/auth";
 import "react-day-picker/dist/style.css";
 import { useEffect, useState } from "react";
-import { format } from "date-fns";
 import { api } from "../../server";
 import { Watch } from "react-loader-spinner";
-import { isAfter } from "date-fns";
 
 interface ISchedules {
   id: string;
@@ -17,32 +15,13 @@ interface ISchedules {
   description: string;
 }
 export function GetAll() {
-  const [date, setDate] = useState(new Date());
+  const [date] = useState(new Date());
   const [schedules, setSchedules] = useState<Array<ISchedules>>([]);
   const { user } = UseAuth();
   const [removeLoading, setRemoveLoading] = useState(false);
 
-  const dateFormatted = format(date, "dd/MM/yyyy");
-
-  const isAfterDate = isAfter(new Date(date), new Date());
-
-  const [hideDayPicker, setHideDayPicker] = useState(true);
-  const handleHideDayPicker = () => {
-    setHideDayPicker(!hideDayPicker);
-    console.log(hideDayPicker);
-  };
-
   const limitBackDate = new Date();
   limitBackDate.setMonth(limitBackDate.getMonth() - 3);
-
-  const isWeekDay = (date: Date) => {
-    const day = date.getDay();
-    return day === day;
-  };
-
-  const handleDataChange = (date: Date) => {
-    setDate(date);
-  };
 
   useEffect(() => {
     setRemoveLoading(false);
@@ -70,11 +49,7 @@ export function GetAll() {
 
       <div className="flex md:justify-evenly 2xs:flex-col xs:flex-col sm:flex-col md:items-center lg:items-start lg:justify-between lg:flex-row">
         <div
-          className={`flex flex-col sm:w-full md:px-4 lg:px-0 md:items-center lg:items-stretch lg:w-full ${
-            !hideDayPicker && style.hmax
-          } 2xs:max-h-[11vh] xs:max-h-[20vh] lg:max-h-[60vh] overflow-x-hidden overflow-y-auto scroll-smooth ${
-            style.cardWrapper
-          }`}
+          className={`flex flex-col sm:w-full md:px-4 lg:px-0 md:items-center lg:items-stretch lg:w-full} max-h-[50vh] overflow-x-hidden overflow-y-auto scroll-smooth ${style.cardWrapper}`}
         >
           {!removeLoading && (
             <div className="flex w-full h-full items-center justify-center">
@@ -98,7 +73,6 @@ export function GetAll() {
                 name={schedules.name}
                 phone={schedules.phone}
                 description={schedules.description}
-                message={`Esta é sua lista de horários do dia ${dateFormatted}`}
               />
             );
           })}

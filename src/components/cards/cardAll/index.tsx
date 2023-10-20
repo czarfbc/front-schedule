@@ -12,16 +12,8 @@ interface ISchedules {
   phone: string;
   date: Date;
   description: string;
-  message: string;
 }
-export const Card = ({
-  id,
-  name,
-  date,
-  phone,
-  description,
-  message,
-}: ISchedules) => {
+export const Card = ({ id, name, date, phone, description }: ISchedules) => {
   const isAfterDate = isAfter(new Date(date), new Date());
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [openModalDelete, setOpenModalDelete] = useState<boolean>(false);
@@ -30,8 +22,10 @@ export const Card = ({
   const gmtFormatted = dateFormatted.toLocaleString("pt-BR", {
     timeZone: "UTC",
   });
-  const partesDataFormatada = gmtFormatted.split(" ")[1];
-  const [hour, minutes] = partesDataFormatada.split(":");
+  const partesDataFormatada = gmtFormatted.split(" ")[0];
+  const dateSliceComma = partesDataFormatada.slice(0, -1);
+  const partesHoraFormatada = gmtFormatted.split(" ")[1];
+  const [hour, minutes] = partesHoraFormatada.split(":");
 
   let phoneFormatted = phone.replace(/\D/g, "");
   phoneFormatted = phoneFormatted.replace(
@@ -49,7 +43,9 @@ export const Card = ({
     <>
       {isAfterDate ? (
         <>
-          <p className="2xs:ml-2 xs:ml-4 font-normal text-primary">{message}</p>
+          <p className="2xs:text-xs xs:text-sm lg:text-xl 2xs:ml-2 xs:ml-4 font-semibold text-lg text-primary">
+            {dateSliceComma}
+          </p>
           <div className="flex flex-col 2xs:mx-0 xs:mx-4 sm:w-auto md:w-full lg:w-auto xs:rounded-lg justify-between items-center 2xs:mb-3 xs:mb-5 shadow-[0px_8px_10px_0px_rgba(0,0,0,0.3)]">
             <div className="flex bg-white w-full justify-between items-center xs:rounded-lg">
               <div className="flex gap-2 items-center">
