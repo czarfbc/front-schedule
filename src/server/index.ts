@@ -31,7 +31,7 @@ api.interceptors.response.use(
         error.response?.data.code === "token.expired"
       ) {
         try {
-          const refresh = localStorage.getItem(`refresh_token:semana-heroi`);
+          const refresh = localStorage.getItem(`refresh_token`);
           const response = await api.post("/users/refresh", {
             refresh_token: refresh,
           });
@@ -62,9 +62,9 @@ api.interceptors.response.use(
         });
       }
     } else {
-      // localStorage.removeItem('token:semana-heroi')
-      // localStorage.removeItem('refresh_token:semana-heroi')
-      // localStorage.removeItem('user:semana-heroi')
+      // localStorage.removeItem('token')
+      // localStorage.removeItem('refresh_token')
+      // localStorage.removeItem('user')
     }
 
     return Promise.reject(error);
