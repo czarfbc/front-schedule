@@ -3,8 +3,8 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { isAfter } from "date-fns";
 import style from "./card.module.css";
 import { useState } from "react";
-import { ModalEdit } from "../modalEdit";
-import { ModalDelete } from "../modalDelete";
+import { ModalEdit } from "../../modalEdit";
+import { ModalDelete } from "../../modalDelete";
 
 interface ISchedules {
   id: string;

@@ -1,4 +1,4 @@
-import { Card } from "../../components/card";
+import { Card } from "../../components/cards/cardDash";
 import style from "./dashboard.module.css";
 import { Header } from "../../components/header";
 import { UseAuth } from "../../hooks/auth";

@@ -1,0 +1,31 @@
+.cardWrapper::-webkit-scrollbar-track {
+  background-color: var(--gray50);
+}
+
+.cardWrapper::-webkit-scrollbar {
+  width: 5px;
+}
+
+.cardWrapper::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 8px;
+}
+.selected {
+  background-color: var(--secondary) !important;
+  color: var(--white) !important;
+}
+.nav_button_previous:hover,
+.nav_button_next:hover {
+  background-color: var(--secondary) !important;
+}
+.day_disabled {
+  background-color: var(--secondary) !important;
+}
+.day:hover {
+  background-color: var(--secondary-20) !important;
+  color: var(--white) !important;
+}
+
+.hmax {
+  max-height: 50vh !important;
+}

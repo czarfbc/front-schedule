@@ -23,8 +23,11 @@ export function Header() {
           {open ? <CgCloseO size={23} /> : <BsGearFill size={23} />}
           {open && (
             <ul className="absolute top-[100%] right-[-1.5rem] p-0 list-none rounded-lg opacity-1 transition-all bg-primary drop-shadow-[0px_9px_4px_rgba(0,0,0,0.25)]">
+              <Link to={"/getall"}>
+                <li className="py-3 px-4 hover:bg-[#64a2a4]">Total_Agendas</li>
+              </Link>
               <Link to={"/dashboard"}>
-                <li className="py-3 px-4 hover:bg-[#64a2a4]">Agendamentos</li>
+                <li className="py-3 px-4 hover:bg-[#64a2a4]">Agenda_Dia</li>
               </Link>
               <Link to={"/schedules"}>
                 <li className="py-3 px-4 hover:bg-[#64a2a4]">Agendar</li>
