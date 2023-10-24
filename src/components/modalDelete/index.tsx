@@ -30,6 +30,7 @@ export function ModalDelete({
       }
     }
   };
+
   if (isOpen) {
     return (
       <div className="fixed inset-0 bg-black bg-opacity-30 z-10">

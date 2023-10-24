@@ -65,7 +65,7 @@ export function Schedules() {
         description,
       });
       toast.success("Agendado com sucesso");
-      navigate("/dashboard");
+      navigate("/");
     } catch (error) {
       if (isAxiosError(error)) {
         toast.error(error.response?.data.message);
@@ -132,7 +132,7 @@ export function Schedules() {
 
           <div className="flex justify-between mt-8">
             <button className="cursor-pointer no-underline font-light 2xs:rounded-xl xs:rounded-2xl py-1 2xs:px-3 xs:px-6 2xs:w-2/5 xs:w-1/3 border-solid border-[1px] border-secondary bg-none text-secondary hover:bg-gray-50">
-              <Link to={"/dashboard"}>Cancelar</Link>
+              <Link to={"/"}>Cancelar</Link>
             </button>
             <button className="cursor-pointer no-underline font-light 2xs:rounded-xl xs:rounded-2xl py-2 2xs:px-3 xs:px-6 2xs:w-2/5 xs:w-1/3 border-solid border-[1px] border-secondary bg-secondary text-white hover:bg-secondary-50">
               Agendar
