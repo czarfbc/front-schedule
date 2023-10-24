@@ -13,7 +13,7 @@ interface ISchedules {
   date: Date;
   description: string;
 }
-export const Card = ({ id, name, date, phone, description }: ISchedules) => {
+export const CardAll = ({ id, name, date, phone, description }: ISchedules) => {
   const isAfterDate = isAfter(new Date(date), new Date());
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [openModalDelete, setOpenModalDelete] = useState<boolean>(false);

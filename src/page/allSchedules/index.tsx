@@ -1,4 +1,4 @@
-import { Card } from "../../components/cards/cardAll";
+import { CardAll } from "../../components/cards/cardAll";
 import style from "./getall.module.css";
 import { Header } from "../../components/header";
 import { UseAuth } from "../../hooks/auth";
@@ -64,9 +64,10 @@ export function GetAll() {
               />
             </div>
           )}
+
           {schedules.map((schedules, index) => {
             return (
-              <Card
+              <CardAll
                 key={index}
                 id={schedules.id}
                 date={schedules.date}

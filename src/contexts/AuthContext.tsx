@@ -124,7 +124,7 @@ export function AuthProvider({ children }: IAuthProvider) {
       localStorage.setItem("refresh_token", refresh_token);
       localStorage.setItem("user", JSON.stringify(userData));
 
-      navigate("/dashboard");
+      navigate("/");
       toast.success(`Seja bem vindo(a), ${userData.name}`);
       setUser(userData);
 
@@ -141,7 +141,7 @@ export function AuthProvider({ children }: IAuthProvider) {
     localStorage.removeItem("token");
     localStorage.removeItem("refresh_token");
     localStorage.removeItem("user");
-    navigate("/");
+    navigate("/login");
   }
   return (
     <AuthContext.Provider
