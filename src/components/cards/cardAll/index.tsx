@@ -46,13 +46,13 @@ export const CardAll = ({ id, name, date, phone, description }: ISchedules) => {
           <p className="2xs:text-xs xs:text-sm lg:text-xl 2xs:ml-2 xs:ml-4 font-semibold text-lg text-primary">
             {dateSliceComma}
           </p>
-          <div className="flex flex-col 2xs:mx-0 xs:mx-4 sm:w-auto md:w-full lg:w-auto xs:rounded-lg justify-between items-center 2xs:mb-3 xs:mb-5 shadow-[0px_8px_10px_0px_rgba(0,0,0,0.3)]">
-            <div className="flex bg-white w-full justify-between items-center xs:rounded-lg">
+          <div className="flex flex-col 2xs:mx-1 xs:mx-4 sm:w-auto md:w-full lg:w-auto rounded-lg justify-between items-center 2xs:mb-6 xs:mb-9 shadow-[0px_8px_10px_0px_rgba(0,0,0,0.3)]">
+            <div className="flex bg-white w-full justify-between items-center rounded-lg">
               <div className="flex gap-2 items-center">
                 <span
                   className={`${
                     !isAfterDate && style.oldHour
-                  }  2xs:text-xs xs:text-sm lg:text-xl bg-secondary text-white xs:rounded-s-lg 2xs:py-[0.5rem] 2xs:px-[0.5rem] xs:p-[0.8rem] md:mr-4 lg:mr-8`}
+                  }  2xs:text-xs xs:text-sm lg:text-xl bg-secondary text-white rounded-s-lg 2xs:py-[0.5rem] 2xs:px-[0.5rem] xs:p-[0.8rem] md:mr-4 lg:mr-8`}
                 >
                   {hour}:{minutes}h
                 </span>

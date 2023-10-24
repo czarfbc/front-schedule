@@ -67,7 +67,7 @@ export function Dashboard() {
   return (
     <div className="max-w-[1340px] mx-auto w-full">
       <Header />
-      <div className="mt-6 xs:mb-8 2xs:m-2 xs:m-4 font-normal text-primary">
+      <div className="mt-6 xs:mb-8 2xs:m-1 2xs:my-2 xs:m-4 font-normal text-primary">
         <h2 className="md:text-xl lg:text-2xl">
           Bem vindo(a), <span className="font-bold">{user.name}</span>
         </h2>
@@ -82,7 +82,7 @@ export function Dashboard() {
           </p>
         )}
       </div>
-      <h2 className="text-secondary xs:mx-4 2xs:m-2 xs:mb-5 md:text-xl lg:text-2xl font-bold">
+      <h2 className="text-secondary xs:mx-4 2xs:m-1 2xs:my-2 xs:mb-5 md:text-xl lg:text-2xl font-bold">
         Próximos Horários
       </h2>
       <div className="flex md:justify-evenly 2xs:flex-col xs:flex-col sm:flex-col md:items-center lg:items-start lg:justify-between lg:flex-row">

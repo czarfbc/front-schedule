@@ -41,15 +41,15 @@ export function GetAll() {
   return (
     <div className="max-w-[1340px] mx-auto w-full">
       <Header />
-      <div className="mt-6 xs:mb-8 2xs:m-2 xs:m-4 font-normal text-primary">
+      <div className="mt-6 xs:mb-8 2xs:m-1 2xs:my-3 xs:m-4 font-normal text-primary">
         <h2 className="md:text-xl lg:text-2xl">
-          Bem vindo(a), <span className="font-bold">{user.name}</span>
+          Agenda completa de, <span className="font-bold">{user.name}</span>
         </h2>
       </div>
 
       <div className="flex md:justify-evenly 2xs:flex-col xs:flex-col sm:flex-col md:items-center lg:items-start lg:justify-between lg:flex-row">
         <div
-          className={`flex flex-col sm:w-full md:px-4 lg:px-0 md:items-center lg:items-stretch lg:w-full} max-h-[60vh] overflow-x-hidden overflow-y-auto scroll-smooth ${style.cardWrapper}`}
+          className={`flex flex-col sm:w-full md:px-4 lg:px-0 md:items-center lg:items-stretch lg:w-full} max-h-[65vh] overflow-x-hidden overflow-y-auto scroll-smooth ${style.cardWrapper}`}
         >
           {!removeLoading && (
             <div className="flex w-full h-full items-center justify-center">

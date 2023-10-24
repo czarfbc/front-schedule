@@ -9,9 +9,9 @@ export function Header() {
   const { signOut } = UseAuth();
   const [open, setOpen] = useState(false);
   return (
-    <header className="flex w-auto justify-between items-center bg-primary text-white py-4 2xs:mx-0 xs:mx-4 px-6 2xs:mt-0 xs:mt-6 xs:rounded-lg shadow-[0_4px_8px_4px_rgba(0,0,0,0.3)]">
+    <header className="flex w-auto justify-between items-center bg-primary text-white py-4 2xs:mx-1 xs:mx-4 px-6 2xs:mt-2 xs:mt-6 rounded-lg shadow-[0_4px_8px_4px_rgba(0,0,0,0.3)]">
       <div>
-        <Link to={"/dashboard"} className="flex items-center">
+        <Link to={"/"} className="flex items-center">
           <img src={logo} alt="" className="-ml-2" />
         </Link>
       </div>
@@ -26,7 +26,7 @@ export function Header() {
               <Link to={"/getall"}>
                 <li className="py-3 px-4 hover:bg-[#64a2a4]">Total_Agendas</li>
               </Link>
-              <Link to={"/dashboard"}>
+              <Link to={"/"}>
                 <li className="py-3 px-4 hover:bg-[#64a2a4]">Agenda_Dia</li>
               </Link>
               <Link to={"/schedules"}>
