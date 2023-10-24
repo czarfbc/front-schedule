@@ -5,6 +5,7 @@ import { Dashboard } from "../page/dashboard";
 import { GetAll } from "../page/allSchedules";
 import { Schedules } from "../page/schedules";
 import { PrivateRoute } from "./privateRoute";
+import { NotFound } from "../page/notFound";
 
 export const RouteApp = () => {
   return (
@@ -35,6 +36,8 @@ export const RouteApp = () => {
           </PrivateRoute>
         }
       />
+      <Route path="*" element={<NotFound />} />{" "}
+      {/* Rota curinga para a página de erro */}
     </Routes>
   );
 };
