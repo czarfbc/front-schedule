@@ -22,8 +22,6 @@ export const CardAll = ({ id, name, date, phone, description }: ISchedules) => {
   const gmtFormatted = dateFormatted.toLocaleString("pt-BR", {
     timeZone: "UTC",
   });
-  const partesDataFormatada = gmtFormatted.split(" ")[0];
-  const dateSliceComma = partesDataFormatada.slice(0, -1);
   const partesHoraFormatada = gmtFormatted.split(" ")[1];
   const [hour, minutes] = partesHoraFormatada.split(":");
 

@@ -28,7 +28,6 @@ export function Dashboard() {
   const [hideDayPicker, setHideDayPicker] = useState(true);
   const handleHideDayPicker = () => {
     setHideDayPicker(!hideDayPicker);
-    console.log(hideDayPicker);
   };
 
   const limitBackDate = new Date();
