@@ -14,6 +14,13 @@ interface ISchedules {
   date: Date;
   description: string;
 }
+interface JsonData {
+  id: string;
+  name: string;
+  phone: string;
+  date: Date;
+  description: string;
+}
 export function GetAll() {
   const [date] = useState(new Date());
   const [schedules, setSchedules] = useState<Array<ISchedules>>([]);
@@ -38,6 +45,24 @@ export function GetAll() {
       .catch((error) => console.log(error));
   }, [date]);
 
+  function groupJsonDataByDate(jsonData: JsonData[]): {
+    [date: string]: JsonData[];
+  } {
+    const groupedData: { [date: string]: JsonData[] } = {};
+
+    jsonData.forEach((item) => {
+      const date = new Date(item.date).toISOString().split("T")[0]; // Extrai a data no formato "YYYY-MM-DD"
+      if (!groupedData[date]) {
+        groupedData[date] = [];
+      }
+      groupedData[date].push(item);
+    });
+
+    return groupedData;
+  }
+  const groupJsonData = groupJsonDataByDate(schedules);
+  console.log(groupJsonData);
+
   return (
     <div className="max-w-[1340px] mx-auto w-full">
       <Header />
@@ -49,7 +74,7 @@ export function GetAll() {
 
       <div className="flex md:justify-evenly 2xs:flex-col xs:flex-col sm:flex-col md:items-center lg:items-start lg:justify-between lg:flex-row">
         <div
-          className={`flex flex-col sm:w-full md:px-4 lg:px-0 md:items-center lg:items-stretch lg:w-full} max-h-[65vh] overflow-x-hidden overflow-y-auto scroll-smooth ${style.cardWrapper}`}
+          className={`flex flex-col sm:w-full 2xs:px-1 xs:px-4 md:items-center lg:items-stretch lg:w-full} max-h-[65vh] overflow-x-hidden overflow-y-auto scroll-smooth ${style.cardWrapper}`}
         >
           {!removeLoading && (
             <div className="flex w-full h-full items-center justify-center">
@@ -65,7 +90,7 @@ export function GetAll() {
             </div>
           )}
 
-          {schedules.map((schedules, index) => {
+          {/* {schedules.map((schedules, index) => {
             return (
               <CardAll
                 key={index}
@@ -76,7 +101,30 @@ export function GetAll() {
                 description={schedules.description}
               />
             );
-          })}
+          })} */}
+
+          {Object.keys(groupJsonData).map((date: string, dataindex: number) => (
+            <div
+              key={dataindex}
+              className={`bg-secondary-20 pt-3 rounded-lg mb-5 flex flex-col sm:w-full 2xs:px-1  md:items-stretch lg:w-full ${style.cardWrapper}`}
+            >
+              <p className="2xs:text-xs bg-secondary-50 border-solid border-[1px] border-white px-1 py-[6px] rounded-md w-fit mb-3 xs:text-sm lg:text-xl font-semibold text-lg text-white">
+                {date}
+              </p>
+              {groupJsonData[date].map(
+                (schedule: ISchedules, index: number) => (
+                  <CardAll
+                    key={index}
+                    id={schedule.id}
+                    date={schedule.date}
+                    name={schedule.name}
+                    phone={schedule.phone}
+                    description={schedule.description}
+                  />
+                )
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </div>
