@@ -57,6 +57,20 @@ export function Dashboard() {
       .catch((error) => console.log(error));
   }, [date]);
 
+  useEffect(() => {
+    api
+      .get("/schedules/deleteoldschedules")
+      .then((response) => {
+        setSchedules(response.data);
+        setRemoveLoading(true);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  useEffect(() => {
+    api.delete("/schedules/deleteoldschedules");
+  }, []);
+
   const footer = date ? (
     <p>Você selecionou {format(date, "PPP", { locale: ptBR })}.</p>
   ) : (

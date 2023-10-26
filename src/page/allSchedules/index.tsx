@@ -34,11 +34,7 @@ export function GetAll() {
   useEffect(() => {
     setRemoveLoading(false);
     api
-      .get("/schedules/getall", {
-        params: {
-          date,
-        },
-      })
+      .get("/schedules/getall")
       .then((response) => {
         setSchedules(response.data);
         setRemoveLoading(true);
