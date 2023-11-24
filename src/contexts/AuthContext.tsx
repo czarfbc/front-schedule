@@ -95,7 +95,7 @@ export function AuthProvider({ children }: IAuthProvider) {
         password,
       });
 
-      navigate("/");
+      navigate("/login");
       toast.success("Conta criada com sucesso");
 
       return data;
@@ -124,7 +124,7 @@ export function AuthProvider({ children }: IAuthProvider) {
       localStorage.setItem("refresh_token", refresh_token);
       localStorage.setItem("user", JSON.stringify(userData));
 
-      navigate("/");
+      navigate("/dashboard");
       toast.success(`Seja bem vindo(a), ${userData.name}`);
       setUser(userData);
 

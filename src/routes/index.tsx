@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { Login } from "../page/login";
 import { Register } from "../page/register";
 import { Dashboard } from "../page/dashboard";
@@ -13,7 +13,7 @@ export const RouteApp = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route
-        path="/"
+        path="/dashboard"
         element={
           <PrivateRoute>
             <Dashboard />
@@ -36,8 +36,9 @@ export const RouteApp = () => {
           </PrivateRoute>
         }
       />
-      <Route path="*" element={<NotFound />} />{" "}
-      {/* Rota curinga para a página de erro */}
+
+      <Route path="/" element={<Navigate to="/dashboard" />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
